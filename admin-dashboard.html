@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Admin Dashboard — NagrikConnect GovTech CRM. Monitor, manage and analyse civic complaints across all departments." />
+  <title>Admin Dashboard — NagrikConnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="dashboard-page admin-page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🛡️ NagrikConnect</a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="complaint-submission.html" class="nav-link">Submit Complaint</a>
+        <a href="complaint-tracking.html" class="nav-link">Track Complaint</a>
+        <a href="complaint-history.html" class="nav-link">History</a>
+        <a href="admin-dashboard.html" class="nav-link active">Admin</a>
+        <a href="support.html" class="nav-link">Support</a>
+        <a href="login.html" class="nav-link btn-nav">Login</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="dashboard-layout">
+
+    <!-- ADMIN SIDEBAR -->
+    <aside class="sidebar admin-sidebar" id="sidebar" role="navigation" aria-label="Admin navigation">
+      <div class="sidebar-header">
+        <div class="user-avatar admin-avatar" aria-hidden="true">🛡️</div>
+        <div class="user-info">
+          <span class="user-name">Suresh Nair</span>
+          <span class="user-role">Municipal Commissioner</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Admin sidebar navigation">
+        <a href="admin-dashboard.html" class="sidebar-link active" aria-current="page">
+          <span class="sidebar-icon">📊</span>
+          <span class="sidebar-label">Dashboard</span>
+        </a>
+        <a href="complaint-history.html" class="sidebar-link">
+          <span class="sidebar-icon">📋</span>
+          <span class="sidebar-label">All Complaints</span>
+          <span class="sidebar-badge">247</span>
+        </a>
+        <a href="authority-assignment.html" class="sidebar-link">
+          <span class="sidebar-icon">👮</span>
+          <span class="sidebar-label">Assign Authority</span>
+          <span class="sidebar-badge">18</span>
+        </a>
+        <a href="#departments" class="sidebar-link">
+          <span class="sidebar-icon">🏢</span>
+          <span class="sidebar-label">Departments</span>
+        </a>
+        <a href="#heatmap" class="sidebar-link">
+          <span class="sidebar-icon">🗺️</span>
+          <span class="sidebar-label">District Heatmap</span>
+        </a>
+        <a href="#reports" class="sidebar-link">
+          <span class="sidebar-icon">📈</span>
+          <span class="sidebar-label">Reports</span>
+        </a>
+        <a href="#announcements" class="sidebar-link">
+          <span class="sidebar-icon">📢</span>
+          <span class="sidebar-label">Announcements</span>
+        </a>
+        <a href="#settings" class="sidebar-link">
+          <span class="sidebar-icon">⚙️</span>
+          <span class="sidebar-label">Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="login.html" class="sidebar-logout">
+          <span>🚪</span> Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- ADMIN MAIN CONTENT -->
+    <main class="dashboard-main admin-main" role="main" id="adminMainContent">
+
+      <!-- ADMIN HEADER -->
+      <header class="dashboard-header admin-header">
+        <div class="welcome-text">
+          <h1>Admin Command Centre 🛡️</h1>
+          <p class="header-subtitle" id="adminDate">Mumbai Municipal Corporation · Live Dashboard</p>
+        </div>
+        <div class="header-actions">
+          <select class="form-input form-select district-select" id="districtSelect" aria-label="Select district for data filtering">
+            <option value="mumbai">Mumbai City</option>
+            <option value="suburban">Mumbai Suburban</option>
+            <option value="thane">Thane</option>
+            <option value="pune">Pune</option>
+            <option value="nagpur">Nagpur</option>
+          </select>
+          <button class="btn btn-secondary" id="refreshBtn" aria-label="Refresh dashboard data">🔄 Refresh</button>
+          <button class="btn btn-primary" id="generateReportBtn" aria-label="Generate analytics report">📊 Generate Report</button>
+        </div>
+      </header>
+
+      <!-- KPI CARDS ROW -->
+      <section class="kpi-row" aria-label="Key performance indicator statistics">
+        <div class="kpi-card" aria-label="Total complaints this month">
+          <div class="kpi-icon">📝</div>
+          <div class="kpi-info">
+            <span class="kpi-number" id="kpiTotal" data-target="247">0</span>
+            <span class="kpi-label">Total Complaints</span>
+          </div>
+          <div class="kpi-badge badge-blue">This Month</div>
+          <div class="kpi-trend trend-up">▲ 12% vs last month</div>
+        </div>
+
+        <div class="kpi-card" aria-label="Resolved complaints">
+          <div class="kpi-icon">✅</div>
+          <div class="kpi-info">
+            <span class="kpi-number" id="kpiResolved" data-target="189">0</span>
+            <span class="kpi-label">Resolved</span>
+          </div>
+          <div class="kpi-badge badge-green">76.5% Rate</div>
+          <div class="kpi-trend trend-up">▲ 8% improvement</div>
+        </div>
+
+        <div class="kpi-card" aria-label="Pending complaints">
+          <div class="kpi-icon">⏳</div>
+          <div class="kpi-info">
+            <span class="kpi-number" id="kpiPending" data-target="40">0</span>
+            <span class="kpi-label">Pending</span>
+          </div>
+          <div class="kpi-badge badge-yellow">Needs Attention</div>
+          <div class="kpi-trend trend-down">▼ 5 assigned today</div>
+        </div>
+
+        <div class="kpi-card" aria-label="Escalated complaints">
+          <div class="kpi-icon">⬆️</div>
+          <div class="kpi-info">
+            <span class="kpi-number" id="kpiEscalated" data-target="18">0</span>
+            <span class="kpi-label">Escalated</span>
+          </div>
+          <div class="kpi-badge badge-red">Urgent Action</div>
+          <div class="kpi-trend trend-warn">⚠️ 3 new today</div>
+        </div>
+      </section>
+
+      <!-- CHARTS GRID -->
+      <section class="charts-grid" aria-label="Analytics charts">
+
+        <div class="chart-card glass-card" aria-label="Complaints by category chart">
+          <div class="chart-header">
+            <h3>📊 Complaints by Category</h3>
+            <select class="chart-filter" aria-label="Filter category chart by time">
+              <option>This Month</option>
+              <option>Last 3 Months</option>
+              <option>This Year</option>
+            </select>
+          </div>
+          <canvas id="categoryBarChart" width="400" height="280" aria-label="Bar chart showing complaints by category" role="img"></canvas>
+        </div>
+
+        <div class="chart-card glass-card" aria-label="Resolution rate over time chart">
+          <div class="chart-header">
+            <h3>📈 Resolution Rate Trend</h3>
+            <select class="chart-filter" aria-label="Filter resolution chart by time">
+              <option>Last 6 Months</option>
+              <option>Last Year</option>
+            </select>
+          </div>
+          <canvas id="resolutionLineChart" width="400" height="280" aria-label="Line chart showing resolution rate trend" role="img"></canvas>
+        </div>
+
+        <div class="chart-card glass-card" aria-label="Complaint status distribution chart">
+          <div class="chart-header">
+            <h3>🥧 Status Distribution</h3>
+            <select class="chart-filter" aria-label="Filter status chart by time">
+              <option>This Month</option>
+              <option>All Time</option>
+            </select>
+          </div>
+          <canvas id="statusPieChart" width="400" height="280" aria-label="Pie chart showing complaint status distribution" role="img"></canvas>
+        </div>
+
+        <div class="chart-card glass-card" aria-label="Department performance chart">
+          <div class="chart-header">
+            <h3>🏆 Department Performance</h3>
+            <select class="chart-filter" aria-label="Filter department chart by time">
+              <option>This Month</option>
+              <option>Last Quarter</option>
+            </select>
+          </div>
+          <canvas id="deptPerformanceChart" width="400" height="280" aria-label="Bar chart showing department performance scores" role="img"></canvas>
+        </div>
+
+      </section>
+
+      <!-- HEATMAP SECTION -->
+      <section class="dash-card heatmap-section" id="heatmap" aria-label="District complaint heatmap">
+        <div class="card-header-row">
+          <h2 class="card-title">🗺️ District Complaint Heatmap</h2>
+          <div class="heatmap-legend" aria-label="Heatmap intensity legend">
+            <span class="legend-label">Low</span>
+            <div class="legend-gradient" aria-hidden="true"></div>
+            <span class="legend-label">High</span>
+          </div>
+        </div>
+        <p class="heatmap-subtitle">Complaint density by ward. Darker colour indicates higher complaint volume.</p>
+        <div class="heatmap-grid" id="heatmapGrid" aria-label="Ward-level complaint density grid" role="grid">
+          <!-- Populated by JS -->
+          <div class="heatmap-row" role="row">
+            <div class="heatmap-cell heat-5" role="gridcell" aria-label="Bandra: Very High — 48 complaints" title="Bandra: 48 complaints">Bandra</div>
+            <div class="heatmap-cell heat-4" role="gridcell" aria-label="Kurla: High — 35 complaints" title="Kurla: 35 complaints">Kurla</div>
+            <div class="heatmap-cell heat-3" role="gridcell" aria-label="Dharavi: Medium-High — 27 complaints" title="Dharavi: 27 complaints">Dharavi</div>
+            <div class="heatmap-cell heat-5" role="gridcell" aria-label="Andheri: Very High — 52 complaints" title="Andheri: 52 complaints">Andheri</div>
+            <div class="heatmap-cell heat-2" role="gridcell" aria-label="Worli: Medium — 18 complaints" title="Worli: 18 complaints">Worli</div>
+          </div>
+          <div class="heatmap-row" role="row">
+            <div class="heatmap-cell heat-1" role="gridcell" aria-label="Malabar Hill: Low — 8 complaints" title="Malabar Hill: 8 complaints">Malabar Hill</div>
+            <div class="heatmap-cell heat-3" role="gridcell" aria-label="Dadar: Medium-High — 29 complaints" title="Dadar: 29 complaints">Dadar</div>
+            <div class="heatmap-cell heat-4" role="gridcell" aria-label="Sion: High — 33 complaints" title="Sion: 33 complaints">Sion</div>
+            <div class="heatmap-cell heat-2" role="gridcell" aria-label="Parel: Medium — 15 complaints" title="Parel: 15 complaints">Parel</div>
+            <div class="heatmap-cell heat-5" role="gridcell" aria-label="Borivali: Very High — 41 complaints" title="Borivali: 41 complaints">Borivali</div>
+          </div>
+          <div class="heatmap-row" role="row">
+            <div class="heatmap-cell heat-3" role="gridcell" aria-label="Chembur: Medium-High — 22 complaints" title="Chembur: 22 complaints">Chembur</div>
+            <div class="heatmap-cell heat-2" role="gridcell" aria-label="Mulund: Medium — 14 complaints" title="Mulund: 14 complaints">Mulund</div>
+            <div class="heatmap-cell heat-4" role="gridcell" aria-label="Ghatkopar: High — 36 complaints" title="Ghatkopar: 36 complaints">Ghatkopar</div>
+            <div class="heatmap-cell heat-1" role="gridcell" aria-label="Vikhroli: Low — 9 complaints" title="Vikhroli: 9 complaints">Vikhroli</div>
+            <div class="heatmap-cell heat-3" role="gridcell" aria-label="Kandivali: Medium-High — 25 complaints" title="Kandivali: 25 complaints">Kandivali</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RECENT COMPLAINTS TABLE -->
+      <section class="dash-card recent-complaints-section" aria-label="Recent complaints requiring attention">
+        <div class="card-header-row">
+          <h2 class="card-title">🆕 Recent Complaints (Live Feed)</h2>
+          <div class="rc-controls">
+            <button class="btn-icon" id="rcRefresh" aria-label="Refresh complaints list">🔄</button>
+            <a href="complaint-history.html" class="view-all-link">View All →</a>
+          </div>
+        </div>
+        <div class="admin-table-wrapper">
+          <table class="admin-table" aria-label="Recent complaints table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Category</th>
+                <th scope="col">Ward</th>
+                <th scope="col">Status</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Filed</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminComplaintsBody" aria-live="polite">
+              <tr>
+                <td><a href="complaint-tracking.html" class="id-link">NC-2024-015</a></td>
+                <td>Raw Sewage Overflow on Dharavi Main Road</td>
+                <td><span class="cat-badge">🌊 Sanitation</span></td>
+                <td>Ward G/N</td>
+                <td><span class="status-badge status-submitted">📝 Submitted</span></td>
+                <td><span class="priority-badge priority-critical">🔴 Critical</span></td>
+                <td><time datetime="2024-12-13">Dec 13</time></td>
+                <td>
+                  <button class="admin-action-btn assign-btn" data-id="NC-2024-015" aria-label="Assign NC-2024-015">Assign</button>
+                </td>
+              </tr>
+              <tr>
+                <td><a href="complaint-tracking.html" class="id-link">NC-2024-014</a></td>
+                <td>Illegal Dumping of Construction Debris on Road</td>
+                <td><span class="cat-badge">🏗️ Construction</span></td>
+                <td>Ward H/W</td>
+                <td><span class="status-badge status-assigned">🏢 Assigned</span></td>
+                <td><span class="priority-badge priority-high">🟠 High</span></td>
+                <td><time datetime="2024-12-12">Dec 12</time></td>
+                <td>
+                  <button class="admin-action-btn view-btn" data-id="NC-2024-014" aria-label="View NC-2024-014">View</button>
+                </td>
+              </tr>
+              <tr>
+                <td><a href="complaint-tracking.html" class="id-link">NC-2024-013</a></td>
+                <td>Broken Water Main Flooding Residential Street</td>
+                <td><span class="cat-badge">💧 Water</span></td>
+                <td>Ward K/E</td>
+                <td><span class="status-badge status-escalated">⬆️ Escalated</span></td>
+                <td><span class="priority-badge priority-critical">🔴 Critical</span></td>
+                <td><time datetime="2024-12-11">Dec 11</time></td>
+                <td>
+                  <button class="admin-action-btn resolve-btn" data-id="NC-2024-013" aria-label="Resolve NC-2024-013">Resolve</button>
+                </td>
+              </tr>
+              <tr>
+                <td><a href="complaint-tracking.html" class="id-link">NC-2024-012</a></td>
+                <td>Illegal Construction Blocking Public Path</td>
+                <td><span class="cat-badge">🏗️ Construction</span></td>
+                <td>Ward H/W</td>
+                <td><span class="status-badge status-escalated">⬆️ Escalated</span></td>
+                <td><span class="priority-badge priority-critical">🔴 Critical</span></td>
+                <td><time datetime="2024-12-05">Dec 5</time></td>
+                <td>
+                  <button class="admin-action-btn view-btn" data-id="NC-2024-012" aria-label="View NC-2024-012">View</button>
+                </td>
+              </tr>
+              <tr>
+                <td><a href="complaint-tracking.html" class="id-link">NC-2024-011</a></td>
+                <td>Broken Streetlight on Worli Sea Face</td>
+                <td><span class="cat-badge">💡 Street Light</span></td>
+                <td>Ward G/S</td>
+                <td><span class="status-badge status-assigned">🏢 Assigned</span></td>
+                <td><span class="priority-badge priority-medium">🟡 Medium</span></td>
+                <td><time datetime="2024-12-12">Dec 12</time></td>
+                <td>
+                  <button class="admin-action-btn view-btn" data-id="NC-2024-011" aria-label="View NC-2024-011">View</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- QUICK ACTIONS PANEL -->
+      <section class="dash-card quick-actions-panel" id="quickActions" aria-label="Admin quick actions">
+        <h2 class="card-title">⚡ Quick Actions</h2>
+        <div class="quick-actions-grid">
+          <button class="qa-btn" onclick="window.location.href='authority-assignment.html'" aria-label="Go to authority assignment panel">
+            <span class="qa-icon">👮</span>
+            <span class="qa-label">Assign Authority</span>
+            <span class="qa-count">18 Unassigned</span>
+          </button>
+          <button class="qa-btn" id="bulkResolveBtn" aria-label="Bulk resolve selected complaints">
+            <span class="qa-icon">✅</span>
+            <span class="qa-label">Bulk Resolve</span>
+            <span class="qa-count">Mark Multiple Done</span>
+          </button>
+          <button class="qa-btn" id="sendAnnouncementBtn" aria-label="Send public announcement">
+            <span class="qa-icon">📢</span>
+            <span class="qa-label">Announcement</span>
+            <span class="qa-count">Notify Citizens</span>
+          </button>
+          <button class="qa-btn" id="exportReportBtn" aria-label="Export monthly report">
+            <span class="qa-icon">📥</span>
+            <span class="qa-label">Export Report</span>
+            <span class="qa-count">Download PDF/CSV</span>
+          </button>
+          <button class="qa-btn" id="slaConfigBtn" aria-label="Configure SLA settings">
+            <span class="qa-icon">⏱️</span>
+            <span class="qa-label">SLA Config</span>
+            <span class="qa-count">Set Deadlines</span>
+          </button>
+          <button class="qa-btn" id="addOfficerBtn" aria-label="Add new officer">
+            <span class="qa-icon">➕</span>
+            <span class="qa-label">Add Officer</span>
+            <span class="qa-count">Manage Team</span>
+          </button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">🛡️ NagrikConnect</span>
+        <p>Empowering Every Citizen. In Every Language.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="complaint-submission.html">Submit Complaint</a>
+          <a href="complaint-tracking.html">Track Complaint</a>
+          <a href="complaint-history.html">History</a>
+        </div>
+        <div class="footer-col">
+          <h4>Dashboards</h4>
+          <a href="citizen-dashboard.html">Citizen Dashboard</a>
+          <a href="admin-dashboard.html">Admin Dashboard</a>
+          <a href="authority-assignment.html">Authority Panel</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="support.html">Help Center</a>
+          <a href="login.html">Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 NagrikConnect. Empowering Citizens Through Technology.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

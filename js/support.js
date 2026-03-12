@@ -87,11 +87,11 @@ const saveChatHistory = (messages) => {
    RENDER CHAT MESSAGES
 ============================================================ */
 const renderMessage = (role, html, timestamp = new Date()) => {
-  const messagesEl = document.getElementById('chat-messages');
+  const messagesEl = document.getElementById('chatMessages');
   if (!messagesEl) return;
 
   const wrapper = document.createElement('div');
-  wrapper.className = `chat-message ${role === 'bot' ? 'msg-bot' : 'msg-user'}`;
+  wrapper.className = `chat-message ${role === 'bot' ? 'chat-msg bot-msg' : 'chat-msg user-msg'}`;
   wrapper.innerHTML = `
     <div class="msg-bubble">
       ${role === 'bot' ? '<span class="bot-avatar">🤖</span>' : ''}
@@ -120,11 +120,11 @@ const renderMessage = (role, html, timestamp = new Date()) => {
 let typingEl = null;
 
 const showTyping = () => {
-  const messagesEl = document.getElementById('chat-messages');
+  const messagesEl = document.getElementById('chatMessages');
   if (!messagesEl || typingEl) return;
 
   typingEl = document.createElement('div');
-  typingEl.className = 'chat-message msg-bot typing-indicator';
+  typingEl.className = 'chat-message chat-msg bot-msg typing-indicator';
   typingEl.innerHTML = `
     <div class="msg-bubble">
       <span class="bot-avatar">🤖</span>
@@ -179,7 +179,7 @@ const EMOJI_LIST = ['😊','😢','😡','👍','👎','🙏','❓','❗','💬'
 const initEmojiPicker = () => {
   const btn     = document.getElementById('emoji-btn');
   const picker  = document.getElementById('emoji-picker');
-  const input   = document.getElementById('chat-input');
+  const input   = document.getElementById('chatInput');
   if (!btn || !picker || !input) return;
 
   picker.innerHTML = EMOJI_LIST.map((e) =>
@@ -207,9 +207,9 @@ const initEmojiPicker = () => {
    INIT CHAT INTERFACE
 ============================================================ */
 const initChat = () => {
-  const input   = document.getElementById('chat-input');
-  const sendBtn = document.getElementById('chat-send-btn');
-  const clearBtn = document.getElementById('chat-clear-btn');
+  const input   = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('chatSendBtn');
+  const clearBtn = document.getElementById('clearChatBtn');
   if (!input || !sendBtn) return;
 
   // Restore history
@@ -240,7 +240,7 @@ const initChat = () => {
   clearBtn?.addEventListener('click', () => {
     sessionStorage.removeItem(CHAT_STORAGE_KEY);
     chatHistory.length = 0;
-    const msgs = document.getElementById('chat-messages');
+    const msgs = document.getElementById('chatMessages');
     if (msgs) msgs.innerHTML = '';
     setTimeout(() => renderMessage('bot', '🗑️ Chat cleared. How can I help you today?'), 200);
   });
@@ -292,7 +292,7 @@ const FAQ_DATA = [
 ];
 
 const initFAQAccordion = () => {
-  const container = document.getElementById('faq-container');
+  const container = document.getElementById('faqList');
   if (!container) return;
 
   container.innerHTML = FAQ_DATA.map((item, i) => `
@@ -371,7 +371,7 @@ const initKnowledgeSearch = () => {
    CONTACT FORM VALIDATION & SUBMISSION
 ============================================================ */
 const initContactForm = () => {
-  const form = document.getElementById('contact-form');
+  const form = document.getElementById('contactForm');
   if (!form) return;
 
   const isValidEmail = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);
@@ -392,10 +392,10 @@ const initContactForm = () => {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const name    = form.querySelector('[name="contact-name"]');
-    const email   = form.querySelector('[name="contact-email"]');
-    const subject = form.querySelector('[name="contact-subject"]');
-    const message = form.querySelector('[name="contact-message"]');
+    const name    = form.querySelector('[name="name"]');
+    const email   = form.querySelector('[name="email"]');
+    const subject = form.querySelector('[name="subject"]');
+    const message = form.querySelector('[name="message"]');
     let valid = true;
 
     [name, email, subject, message].forEach((el) => el && clearFieldError(el));
@@ -444,7 +444,7 @@ const initContactForm = () => {
    QUICK-REPLY SUGGESTION CHIPS
 ============================================================ */
 const initQuickReplies = () => {
-  const container = document.getElementById('quick-replies');
+  const container = document.getElementById('quickReplies');
   if (!container) return;
 
   const chips = ['Track complaint', 'Submit complaint', 'Login help', 'Contact info', 'Departments', 'Response time'];
@@ -452,7 +452,7 @@ const initQuickReplies = () => {
     `<button type="button" class="quick-chip" data-query="${chip}">${chip}</button>`
   ).join('');
 
-  container.querySelectorAll('.quick-chip').forEach((chip) => {
+  container.querySelectorAll('.quick-reply-chip').forEach((chip) => {
     chip.addEventListener('click', () => sendMessage(chip.dataset.query));
   });
 };

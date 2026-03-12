@@ -140,7 +140,7 @@ const initPasswordToggle = () => {
 const REMEMBER_KEY = 'nagrik_remember_email';
 
 const initRememberMe = () => {
-  const citizenForm = document.getElementById('citizen-form');
+  const citizenForm = document.getElementById('citizenLoginForm');
   if (!citizenForm) return;
 
   const emailInput  = citizenForm.querySelector('input[type="email"]');
@@ -200,8 +200,8 @@ const validateLoginForm = (form) => {
    ANIMATED FORM SUBMISSION + REDIRECT SIMULATION
 ============================================================ */
 const MOCK_CREDENTIALS = {
-  citizen: { email: 'citizen@nagrik.gov', password: 'demo123', redirect: 'dashboard.html' },
-  admin:   { email: 'admin@nagrik.gov',   password: 'admin123', redirect: 'admin.html' },
+  citizen: { email: 'citizen@demo.nagrik.in', password: 'Citizen@123', redirect: 'citizen-dashboard.html' },
+  admin:   { email: 'admin@demo.nagrik.in',   password: 'Admin@Secure123', redirect: 'admin-dashboard.html' },
 };
 
 const handleFormSubmit = (form, role) => {
@@ -324,8 +324,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initDemoHints();
   initLoginBg();
 
-  const citizenForm = document.getElementById('citizen-form');
-  const adminForm   = document.getElementById('admin-form');
+  const citizenForm = document.getElementById('citizenLoginForm');
+  const adminForm   = document.getElementById('adminLoginForm');
   if (citizenForm) handleFormSubmit(citizenForm, 'citizen');
   if (adminForm)   handleFormSubmit(adminForm,   'admin');
 });

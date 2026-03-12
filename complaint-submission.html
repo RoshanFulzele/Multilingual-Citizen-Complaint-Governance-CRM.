@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Submit a civic complaint on NagrikConnect — in your language, with voice input and photo evidence." />
+  <title>Submit Complaint — NagrikConnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/submission.css" />
+</head>
+<body class="submission-page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🛡️ NagrikConnect</a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="complaint-submission.html" class="nav-link active">Submit Complaint</a>
+        <a href="complaint-tracking.html" class="nav-link">Track Complaint</a>
+        <a href="complaint-history.html" class="nav-link">History</a>
+        <a href="admin-dashboard.html" class="nav-link">Admin</a>
+        <a href="support.html" class="nav-link">Support</a>
+        <a href="login.html" class="nav-link btn-nav">Login</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="submission-main" role="main">
+    <div class="submission-container">
+
+      <!-- PAGE HEADER -->
+      <header class="submission-header">
+        <h1>📝 Submit a Civic Complaint</h1>
+        <p>Report civic issues in your local area. Available in 12 Indian languages. Your complaint will be automatically routed to the correct department.</p>
+      </header>
+
+      <!-- STEP INDICATOR -->
+      <nav class="steps-indicator" aria-label="Form progress steps">
+        <div class="step active" id="step-indicator-1" aria-current="step">
+          <div class="step-circle">1</div>
+          <span class="step-label">Complaint Details</span>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step" id="step-indicator-2">
+          <div class="step-circle">2</div>
+          <span class="step-label">Evidence &amp; Location</span>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step" id="step-indicator-3">
+          <div class="step-circle">3</div>
+          <span class="step-label">Review &amp; Submit</span>
+        </div>
+      </nav>
+
+      <!-- MULTI-STEP FORM -->
+      <form class="submission-form" id="submissionForm" novalidate aria-label="Civic complaint submission form">
+
+        <!-- ===== STEP 1 ===== -->
+        <fieldset class="form-step active" id="formStep1" aria-labelledby="step1-legend">
+          <legend id="step1-legend" class="step-legend">Step 1: Complaint Details</legend>
+
+          <div class="form-group">
+            <label for="complaintTitle" class="form-label">Complaint Title <span class="required" aria-hidden="true">*</span></label>
+            <input
+              type="text"
+              id="complaintTitle"
+              name="title"
+              class="form-input"
+              placeholder="e.g., Overflowing drain blocking Nehru Nagar Road"
+              required
+              aria-required="true"
+              aria-describedby="titleHelp titleError"
+              maxlength="120"
+            />
+            <span class="field-hint" id="titleHelp">Be specific — include the street name or landmark (max 120 characters)</span>
+            <span class="field-error" id="titleError" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="complaintCategory" class="form-label">Category <span class="required" aria-hidden="true">*</span></label>
+              <select
+                id="complaintCategory"
+                name="category"
+                class="form-input form-select"
+                required
+                aria-required="true"
+                aria-describedby="categoryError"
+              >
+                <option value="">— Select a Category —</option>
+                <option value="noise">🔊 Noise Pollution</option>
+                <option value="parking">🚗 Illegal Parking</option>
+                <option value="sanitation">🌊 Sanitation &amp; Drainage</option>
+                <option value="animals">🐕 Street Animals</option>
+                <option value="washroom">🚻 Public Washroom</option>
+                <option value="road">🛣️ Road Damage / Pothole</option>
+                <option value="streetlight">💡 Street Light Failure</option>
+                <option value="garbage">🗑️ Garbage Collection</option>
+                <option value="construction">🏗️ Illegal Construction</option>
+                <option value="water">💧 Water Supply Issue</option>
+                <option value="electricity">⚡ Electricity / Power</option>
+                <option value="other">📌 Other</option>
+              </select>
+              <span class="field-error" id="categoryError" role="alert" aria-live="polite"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="languageSelect" class="form-label">Preferred Language</label>
+              <select
+                id="languageSelect"
+                name="language"
+                class="form-input form-select"
+                aria-label="Select submission language"
+              >
+                <option value="en" selected>🇬🇧 English</option>
+                <option value="hi">🇮🇳 हिंदी (Hindi)</option>
+                <option value="mr">मराठी (Marathi)</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+                <option value="te">తెలుగు (Telugu)</option>
+                <option value="bn">বাংলা (Bengali)</option>
+                <option value="gu">ગુજરાતી (Gujarati)</option>
+                <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                <option value="ml">മലയാളം (Malayalam)</option>
+                <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                <option value="ur">اردو (Urdu)</option>
+                <option value="or">ଓଡ଼ିଆ (Odia)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group description-group">
+            <div class="desc-header">
+              <label for="complaintDescription" class="form-label">Detailed Description <span class="required" aria-hidden="true">*</span></label>
+              <button
+                type="button"
+                id="voiceBtn"
+                class="voice-btn"
+                aria-label="Use voice input to describe the complaint"
+                aria-pressed="false"
+              >
+                🎤 Voice Input
+              </button>
+            </div>
+            <div class="voice-status" id="voiceStatus" aria-live="polite" role="status" hidden>
+              <span class="voice-indicator" aria-hidden="true">🔴</span>
+              <span>Listening… Speak clearly in your chosen language</span>
+            </div>
+            <textarea
+              id="complaintDescription"
+              name="description"
+              class="form-input"
+              rows="6"
+              placeholder="Describe the civic issue in detail. Include: What is the problem? When did it start? How is it affecting residents? Any prior attempts to report it?"
+              required
+              aria-required="true"
+              aria-describedby="descHelp descError"
+              maxlength="2000"
+            ></textarea>
+            <div class="desc-footer-row">
+              <span class="field-hint" id="descHelp">Minimum 50 characters. Maximum 2000.</span>
+              <span class="char-count" id="charCount" aria-live="polite">0 / 2000</span>
+            </div>
+            <span class="field-error" id="descError" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="prioritySelect" class="form-label">Priority Level <span class="required" aria-hidden="true">*</span></label>
+              <div class="priority-options" role="group" aria-label="Priority level selection">
+                <label class="priority-option" aria-label="Low priority">
+                  <input type="radio" name="priority" value="low" id="priorityLow" aria-describedby="priorityLowDesc" />
+                  <span class="priority-label priority-low">🟢 Low</span>
+                  <span class="priority-desc" id="priorityLowDesc">Minor inconvenience, not urgent</span>
+                </label>
+                <label class="priority-option" aria-label="Medium priority">
+                  <input type="radio" name="priority" value="medium" id="priorityMedium" checked aria-describedby="priorityMedDesc" />
+                  <span class="priority-label priority-medium">🟡 Medium</span>
+                  <span class="priority-desc" id="priorityMedDesc">Moderate issue affecting daily life</span>
+                </label>
+                <label class="priority-option" aria-label="High priority">
+                  <input type="radio" name="priority" value="high" id="priorityHigh" aria-describedby="priorityHighDesc" />
+                  <span class="priority-label priority-high">🟠 High</span>
+                  <span class="priority-desc" id="priorityHighDesc">Significant public inconvenience</span>
+                </label>
+                <label class="priority-option" aria-label="Critical priority">
+                  <input type="radio" name="priority" value="critical" id="priorityCritical" aria-describedby="priorityCritDesc" />
+                  <span class="priority-label priority-critical">🔴 Critical</span>
+                  <span class="priority-desc" id="priorityCritDesc">Health/safety emergency</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-nav">
+            <div></div>
+            <button type="button" class="btn btn-primary" id="toStep2" aria-label="Proceed to step 2: Evidence and Location">
+              Next: Add Evidence →
+            </button>
+          </div>
+        </fieldset>
+
+        <!-- ===== STEP 2 ===== -->
+        <fieldset class="form-step" id="formStep2" hidden aria-labelledby="step2-legend">
+          <legend id="step2-legend" class="step-legend">Step 2: Evidence &amp; Location</legend>
+
+          <!-- IMAGE UPLOAD -->
+          <div class="form-group">
+            <label class="form-label">Photo Evidence <span class="optional-tag">(Recommended)</span></label>
+            <div
+              id="dropZone"
+              class="drop-zone"
+              role="button"
+              tabindex="0"
+              aria-label="Drop images here or click to upload photo evidence"
+              aria-describedby="dropZoneHint"
+            >
+              <div class="drop-zone-inner">
+                <span class="drop-icon" aria-hidden="true">📸</span>
+                <p class="drop-title">Drop images here or <span class="drop-browse">browse files</span></p>
+                <p class="drop-hint" id="dropZoneHint">Supports JPG, PNG, WEBP · Max 5 images · 5MB each</p>
+              </div>
+              <input
+                type="file"
+                id="imageInput"
+                name="images"
+                multiple
+                accept="image/*"
+                class="drop-input"
+                aria-label="Select images to upload as evidence"
+              />
+            </div>
+            <div id="imagePreview" class="image-preview" role="list" aria-label="Uploaded image previews" aria-live="polite"></div>
+          </div>
+
+          <!-- LOCATION -->
+          <div class="form-group">
+            <label for="locationInput" class="form-label">Location / Address <span class="required" aria-hidden="true">*</span></label>
+            <div class="location-input-row">
+              <div class="input-wrapper location-wrapper">
+                <span class="input-icon">📍</span>
+                <input
+                  type="text"
+                  id="locationInput"
+                  name="location"
+                  class="form-input"
+                  placeholder="e.g., Linking Road, near Shoppers Stop, Bandra West, Mumbai 400050"
+                  required
+                  aria-required="true"
+                  aria-describedby="locationError locationHelp"
+                />
+              </div>
+              <button type="button" class="btn btn-secondary" id="geoLocBtn" aria-label="Use my current GPS location">
+                📡 Use My Location
+              </button>
+            </div>
+            <span class="field-hint" id="locationHelp">Include street name, landmark, and PIN code for accurate routing</span>
+            <span class="field-error" id="locationError" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="wardInput" class="form-label">Ward / Area</label>
+              <input type="text" id="wardInput" name="ward" class="form-input" placeholder="e.g., Ward H/W, Bandra" aria-describedby="wardHelp" />
+              <span class="field-hint" id="wardHelp">Optional — helps faster routing</span>
+            </div>
+            <div class="form-group">
+              <label for="landmarkInput" class="form-label">Nearest Landmark</label>
+              <input type="text" id="landmarkInput" name="landmark" class="form-input" placeholder="e.g., Opposite HDFC Bank" />
+            </div>
+          </div>
+
+          <!-- CITIZEN CONTACT -->
+          <div class="form-group">
+            <label for="contactName" class="form-label">Your Name <span class="required" aria-hidden="true">*</span></label>
+            <input type="text" id="contactName" name="citizenName" class="form-input" placeholder="Your full name" required aria-required="true" aria-describedby="nameError" />
+            <span class="field-error" id="nameError" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="contactPhone" class="form-label">Mobile Number <span class="required" aria-hidden="true">*</span></label>
+              <div class="input-wrapper">
+                <span class="input-icon">📱</span>
+                <input type="tel" id="contactPhone" name="phone" class="form-input" placeholder="+91 98765 43210" required aria-required="true" aria-describedby="phoneError" inputmode="tel" />
+              </div>
+              <span class="field-error" id="phoneError" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">Email Address <span class="optional-tag">(Optional)</span></label>
+              <div class="input-wrapper">
+                <span class="input-icon">📧</span>
+                <input type="email" id="contactEmail" name="email" class="form-input" placeholder="you@example.com" aria-describedby="emailHelp" />
+              </div>
+              <span class="field-hint" id="emailHelp">For status updates and resolution notifications</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="anonymous" id="anonymousCheck" />
+              <span class="checkmark"></span>
+              Submit anonymously (your contact details will not be shared with authorities)
+            </label>
+          </div>
+
+          <div class="step-nav">
+            <button type="button" class="btn btn-outline" id="backToStep1" aria-label="Go back to step 1">
+              ← Back
+            </button>
+            <button type="button" class="btn btn-primary" id="toStep3" aria-label="Proceed to step 3: Review and Submit">
+              Next: Review →
+            </button>
+          </div>
+        </fieldset>
+
+        <!-- ===== STEP 3 ===== -->
+        <fieldset class="form-step" id="formStep3" hidden aria-labelledby="step3-legend">
+          <legend id="step3-legend" class="step-legend">Step 3: Review &amp; Submit</legend>
+
+          <div class="review-panel" id="reviewPanel" aria-label="Complaint review summary">
+            <h3 class="review-title">📋 Review Your Complaint</h3>
+            <div class="review-grid" id="reviewGrid">
+              <!-- Populated by JS -->
+              <div class="review-item">
+                <span class="review-key">Title</span>
+                <span class="review-val" id="reviewTitle">—</span>
+              </div>
+              <div class="review-item">
+                <span class="review-key">Category</span>
+                <span class="review-val" id="reviewCategory">—</span>
+              </div>
+              <div class="review-item">
+                <span class="review-key">Priority</span>
+                <span class="review-val" id="reviewPriority">—</span>
+              </div>
+              <div class="review-item">
+                <span class="review-key">Language</span>
+                <span class="review-val" id="reviewLanguage">—</span>
+              </div>
+              <div class="review-item review-item-full">
+                <span class="review-key">Description</span>
+                <span class="review-val" id="reviewDescription">—</span>
+              </div>
+              <div class="review-item review-item-full">
+                <span class="review-key">Location</span>
+                <span class="review-val" id="reviewLocation">—</span>
+              </div>
+              <div class="review-item">
+                <span class="review-key">Contact Name</span>
+                <span class="review-val" id="reviewName">—</span>
+              </div>
+              <div class="review-item">
+                <span class="review-key">Mobile</span>
+                <span class="review-val" id="reviewPhone">—</span>
+              </div>
+            </div>
+
+            <div class="review-images" id="reviewImages" aria-label="Uploaded evidence images" aria-live="polite"></div>
+          </div>
+
+          <div class="declaration-box">
+            <label class="checkbox-label declaration-label">
+              <input type="checkbox" name="declaration" id="declarationCheck" required aria-required="true" aria-describedby="declareError" />
+              <span class="checkmark"></span>
+              I declare that the information provided above is accurate and true to the best of my knowledge. I understand that filing a false or malicious complaint is a punishable offence.
+            </label>
+            <span class="field-error" id="declareError" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="step-nav">
+            <button type="button" class="btn btn-outline" id="backToStep2" aria-label="Go back to step 2">
+              ← Back
+            </button>
+            <button type="submit" class="btn btn-primary btn-submit" id="submitBtn" aria-label="Submit civic complaint">
+              <span class="submit-text">🚀 Submit Complaint</span>
+              <span class="submit-loader" aria-hidden="true" hidden>⏳ Submitting…</span>
+            </button>
+          </div>
+        </fieldset>
+
+      </form>
+
+      <!-- SUCCESS MESSAGE (hidden by default) -->
+      <div class="submission-success" id="successMessage" hidden aria-live="assertive" role="status">
+        <div class="success-icon" aria-hidden="true">🎉</div>
+        <h2>Complaint Submitted Successfully!</h2>
+        <p>Your complaint has been received and assigned a unique tracking ID.</p>
+        <div class="tracking-id-display">
+          <span class="tid-label">Your Tracking ID:</span>
+          <strong class="tid-value" id="generatedId">NC-2024-XXX</strong>
+          <button class="copy-id-btn" id="copyIdBtn" aria-label="Copy tracking ID">📋 Copy</button>
+        </div>
+        <p class="success-next">You will receive an SMS on your registered mobile number with updates. You can also track this complaint at any time.</p>
+        <div class="success-actions">
+          <a href="complaint-tracking.html" class="btn btn-primary" aria-label="Track your submitted complaint">🔍 Track My Complaint</a>
+          <a href="complaint-submission.html" class="btn btn-outline" aria-label="Submit another complaint">📝 Submit Another</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">🛡️ NagrikConnect</span>
+        <p>Empowering Every Citizen. In Every Language.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="complaint-submission.html">Submit Complaint</a>
+          <a href="complaint-tracking.html">Track Complaint</a>
+          <a href="complaint-history.html">History</a>
+        </div>
+        <div class="footer-col">
+          <h4>Dashboards</h4>
+          <a href="citizen-dashboard.html">Citizen Dashboard</a>
+          <a href="admin-dashboard.html">Admin Dashboard</a>
+          <a href="authority-assignment.html">Authority Panel</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="support.html">Help Center</a>
+          <a href="login.html">Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 NagrikConnect. Empowering Citizens Through Technology.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/submission.js"></script>
+</body>
+</html>

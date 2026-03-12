@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Citizen Dashboard — Manage and track all your civic complaints on NagrikConnect." />
+  <title>Citizen Dashboard — NagrikConnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body class="dashboard-page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🛡️ NagrikConnect</a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="complaint-submission.html" class="nav-link">Submit Complaint</a>
+        <a href="complaint-tracking.html" class="nav-link">Track Complaint</a>
+        <a href="complaint-history.html" class="nav-link">History</a>
+        <a href="admin-dashboard.html" class="nav-link">Admin</a>
+        <a href="support.html" class="nav-link">Support</a>
+        <a href="login.html" class="nav-link btn-nav">Login</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Dashboard navigation">
+      <div class="sidebar-header">
+        <div class="user-avatar" aria-hidden="true">👤</div>
+        <div class="user-info">
+          <span class="user-name">Rahul Sharma</span>
+          <span class="user-role">Citizen · Mumbai</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Sidebar navigation">
+        <a href="citizen-dashboard.html" class="sidebar-link active" aria-current="page">
+          <span class="sidebar-icon">🏠</span>
+          <span class="sidebar-label">Dashboard</span>
+        </a>
+        <a href="complaint-submission.html" class="sidebar-link">
+          <span class="sidebar-icon">📝</span>
+          <span class="sidebar-label">Submit Complaint</span>
+        </a>
+        <a href="complaint-tracking.html" class="sidebar-link">
+          <span class="sidebar-icon">🔍</span>
+          <span class="sidebar-label">Track Complaint</span>
+        </a>
+        <a href="complaint-history.html" class="sidebar-link">
+          <span class="sidebar-icon">📋</span>
+          <span class="sidebar-label">Complaint History</span>
+        </a>
+        <a href="#notifications" class="sidebar-link">
+          <span class="sidebar-icon">🔔</span>
+          <span class="sidebar-label">Notifications</span>
+          <span class="sidebar-badge">3</span>
+        </a>
+        <a href="#settings" class="sidebar-link">
+          <span class="sidebar-icon">⚙️</span>
+          <span class="sidebar-label">Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="login.html" class="sidebar-logout">
+          <span>🚪</span> Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-main" role="main" id="mainContent">
+
+      <!-- WELCOME HEADER -->
+      <header class="dashboard-header">
+        <div class="welcome-text">
+          <h1>Welcome back, Rahul! 👋</h1>
+          <p class="header-date" id="currentDate">Loading date...</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-primary" onclick="window.location.href='complaint-submission.html'" aria-label="Submit a new complaint">
+            + New Complaint
+          </button>
+          <button class="notification-btn" id="notifBtn" aria-label="View notifications (3 unread)">
+            🔔 <span class="notif-badge">3</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- STAT CARDS -->
+      <section class="stats-row" aria-label="Complaint statistics">
+        <div class="stat-card-dash" aria-label="Total complaints">
+          <div class="scd-icon">📊</div>
+          <div class="scd-info">
+            <span class="scd-number" id="totalComplaints">12</span>
+            <span class="scd-label">Total Complaints</span>
+          </div>
+          <div class="scd-trend trend-up">▲ 2 this week</div>
+        </div>
+        <div class="stat-card-dash" aria-label="Active complaints">
+          <div class="scd-icon">⚙️</div>
+          <div class="scd-info">
+            <span class="scd-number" id="activeComplaints">4</span>
+            <span class="scd-label">Active</span>
+          </div>
+          <div class="scd-trend trend-neutral">In Progress</div>
+        </div>
+        <div class="stat-card-dash" aria-label="Resolved complaints">
+          <div class="scd-icon">✅</div>
+          <div class="scd-info">
+            <span class="scd-number" id="resolvedComplaints">7</span>
+            <span class="scd-label">Resolved</span>
+          </div>
+          <div class="scd-trend trend-up">▲ 3 this month</div>
+        </div>
+        <div class="stat-card-dash" aria-label="Escalated complaints">
+          <div class="scd-icon">⬆️</div>
+          <div class="scd-info">
+            <span class="scd-number" id="escalatedComplaints">1</span>
+            <span class="scd-label">Escalated</span>
+          </div>
+          <div class="scd-trend trend-warn">Awaiting Action</div>
+        </div>
+      </section>
+
+      <div class="dashboard-grid">
+
+        <!-- QUICK SUBMIT FORM -->
+        <section class="dash-card quick-submit" aria-label="Quick complaint submission">
+          <h2 class="card-title">⚡ Quick Submit</h2>
+          <form class="quick-form" id="quickSubmitForm" aria-label="Quick complaint form">
+            <div class="form-group">
+              <label for="quickTitle" class="form-label">Issue Title</label>
+              <input type="text" id="quickTitle" class="form-input" placeholder="e.g., Broken streetlight on MG Road" required aria-required="true" />
+            </div>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="quickCategory" class="form-label">Category</label>
+                <select id="quickCategory" class="form-input form-select" aria-label="Complaint category">
+                  <option value="">Select Category</option>
+                  <option value="noise">Noise Pollution</option>
+                  <option value="parking">Illegal Parking</option>
+                  <option value="sanitation">Sanitation</option>
+                  <option value="animals">Street Animals</option>
+                  <option value="washroom">Public Washroom</option>
+                  <option value="road">Road Damage</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="quickPriority" class="form-label">Priority</label>
+                <select id="quickPriority" class="form-input form-select" aria-label="Complaint priority">
+                  <option value="low">Low</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="high">High</option>
+                  <option value="critical">Critical</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="quickDesc" class="form-label">Brief Description</label>
+              <textarea id="quickDesc" class="form-input" rows="3" placeholder="Briefly describe the civic issue..." required aria-required="true"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" aria-label="Submit quick complaint">
+              Submit Quick Complaint
+            </button>
+          </form>
+        </section>
+
+        <!-- CHARTS SECTION -->
+        <section class="dash-card charts-card" aria-label="Complaint analytics">
+          <h2 class="card-title">📊 My Complaints Analytics</h2>
+          <div class="charts-row">
+            <div class="chart-wrapper">
+              <h3 class="chart-label">By Category</h3>
+              <canvas id="categoryChart" width="200" height="200" aria-label="Complaints by category chart" role="img"></canvas>
+            </div>
+            <div class="chart-wrapper">
+              <h3 class="chart-label">Monthly Trend</h3>
+              <canvas id="monthlyChart" width="300" height="200" aria-label="Monthly complaints trend chart" role="img"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <!-- ACTIVE COMPLAINTS -->
+        <section class="dash-card active-complaints" aria-label="Active complaints list">
+          <div class="card-header-row">
+            <h2 class="card-title">📋 Active Complaints</h2>
+            <a href="complaint-history.html" class="view-all-link">View All →</a>
+          </div>
+          <div class="complaint-cards-list">
+
+            <article class="complaint-item" aria-label="Complaint NC-2024-009">
+              <div class="ci-header">
+                <span class="ci-id">NC-2024-009</span>
+                <span class="ci-status status-inprogress">In Progress</span>
+              </div>
+              <h4 class="ci-title">Overflowing Drain Near Linking Road</h4>
+              <p class="ci-desc">Storm drain has been overflowing for 3 days causing waterlogging on the main road and health hazards.</p>
+              <div class="ci-meta">
+                <span class="ci-category">🌊 Sanitation</span>
+                <span class="ci-date">📅 Dec 10, 2024</span>
+                <span class="ci-priority priority-high">High Priority</span>
+              </div>
+              <div class="ci-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 55%" aria-label="55% progress"></div>
+                </div>
+                <span class="progress-label">Stage 3 of 5 — Processing by Department</span>
+              </div>
+              <div class="ci-actions">
+                <a href="complaint-tracking.html" class="ci-btn ci-btn-track">🔍 Track</a>
+                <button class="ci-btn ci-btn-update" aria-label="View latest update">💬 Update</button>
+              </div>
+            </article>
+
+            <article class="complaint-item" aria-label="Complaint NC-2024-011">
+              <div class="ci-header">
+                <span class="ci-id">NC-2024-011</span>
+                <span class="ci-status status-assigned">Assigned</span>
+              </div>
+              <h4 class="ci-title">Broken Streetlight on Worli Sea Face</h4>
+              <p class="ci-desc">Street light pole near junction has been non-functional for 5 days creating safety concerns at night.</p>
+              <div class="ci-meta">
+                <span class="ci-category">💡 Infrastructure</span>
+                <span class="ci-date">📅 Dec 12, 2024</span>
+                <span class="ci-priority priority-medium">Medium Priority</span>
+              </div>
+              <div class="ci-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 30%" aria-label="30% progress"></div>
+                </div>
+                <span class="progress-label">Stage 2 of 5 — Assigned to Local Office</span>
+              </div>
+              <div class="ci-actions">
+                <a href="complaint-tracking.html" class="ci-btn ci-btn-track">🔍 Track</a>
+                <button class="ci-btn ci-btn-update" aria-label="View latest update">💬 Update</button>
+              </div>
+            </article>
+
+            <article class="complaint-item" aria-label="Complaint NC-2024-012">
+              <div class="ci-header">
+                <span class="ci-id">NC-2024-012</span>
+                <span class="ci-status status-escalated">Escalated</span>
+              </div>
+              <h4 class="ci-title">Illegal Construction Blocking Public Path</h4>
+              <p class="ci-desc">Unauthorized construction has blocked the public walkway. Municipal office has not responded in 8 days. Escalated to Commissioner.</p>
+              <div class="ci-meta">
+                <span class="ci-category">🏗️ Construction</span>
+                <span class="ci-date">📅 Dec 5, 2024</span>
+                <span class="ci-priority priority-critical">Critical</span>
+              </div>
+              <div class="ci-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill progress-escalated" style="width: 70%" aria-label="70% progress, escalated"></div>
+                </div>
+                <span class="progress-label">Stage 4 of 5 — Escalated to Head Department</span>
+              </div>
+              <div class="ci-actions">
+                <a href="complaint-tracking.html" class="ci-btn ci-btn-track">🔍 Track</a>
+                <button class="ci-btn ci-btn-update" aria-label="View latest update">💬 Update</button>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- ACTIVITY TIMELINE -->
+        <section class="dash-card activity-timeline" aria-label="Recent activity timeline">
+          <h2 class="card-title">🕐 Recent Activity</h2>
+          <ol class="timeline-list" aria-label="Activity timeline">
+            <li class="timeline-item tl-resolved">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-content">
+                <span class="tl-event">Complaint NC-2024-007 Resolved ✅</span>
+                <p class="tl-desc">Pothole on Andheri-Kurla Road has been repaired by BMC team.</p>
+                <time class="tl-time" datetime="2024-12-13">Dec 13, 2024 · 10:30 AM</time>
+              </div>
+            </li>
+            <li class="timeline-item tl-update">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-content">
+                <span class="tl-event">Update on NC-2024-012 📢</span>
+                <p class="tl-desc">Your complaint has been escalated to Municipal Commissioner Office.</p>
+                <time class="tl-time" datetime="2024-12-12">Dec 12, 2024 · 3:15 PM</time>
+              </div>
+            </li>
+            <li class="timeline-item tl-submit">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-content">
+                <span class="tl-event">New Complaint Submitted 📝</span>
+                <p class="tl-desc">NC-2024-012: Illegal Construction Blocking Public Path — filed successfully.</p>
+                <time class="tl-time" datetime="2024-12-05">Dec 5, 2024 · 9:00 AM</time>
+              </div>
+            </li>
+            <li class="timeline-item tl-resolved">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-content">
+                <span class="tl-event">Complaint NC-2024-005 Resolved ✅</span>
+                <p class="tl-desc">Noise complaint against commercial establishment addressed by local police.</p>
+                <time class="tl-time" datetime="2024-12-02">Dec 2, 2024 · 6:45 PM</time>
+              </div>
+            </li>
+            <li class="timeline-item tl-update">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-content">
+                <span class="tl-event">Department Response Received 💬</span>
+                <p class="tl-desc">Sanitation Dept responded to NC-2024-009: Team dispatched for drain clearing.</p>
+                <time class="tl-time" datetime="2024-12-01">Dec 1, 2024 · 11:00 AM</time>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <!-- NOTIFICATIONS PANEL -->
+        <section class="dash-card notifications-panel" id="notifications" aria-label="Notifications panel" aria-live="polite">
+          <h2 class="card-title">🔔 Notifications <span class="notif-count-badge">3</span></h2>
+          <ul class="notif-list" aria-label="Notification list">
+            <li class="notif-item notif-unread" aria-label="Unread notification">
+              <div class="notif-icon notif-resolved">✅</div>
+              <div class="notif-text">
+                <p><strong>Complaint Resolved!</strong> Your complaint NC-2024-007 has been marked as resolved by BMC Ward Office.</p>
+                <time class="notif-time" datetime="2024-12-13">Today, 10:30 AM</time>
+              </div>
+            </li>
+            <li class="notif-item notif-unread" aria-label="Unread notification">
+              <div class="notif-icon notif-escalated">⬆️</div>
+              <div class="notif-text">
+                <p><strong>Complaint Escalated.</strong> NC-2024-012 has been escalated to the Municipal Commissioner's office due to delayed response.</p>
+                <time class="notif-time" datetime="2024-12-12">Yesterday, 3:15 PM</time>
+              </div>
+            </li>
+            <li class="notif-item notif-unread" aria-label="Unread notification">
+              <div class="notif-icon notif-update">💬</div>
+              <div class="notif-text">
+                <p><strong>Department Update.</strong> Sanitation team has been dispatched to address your drain overflow complaint (NC-2024-009).</p>
+                <time class="notif-time" datetime="2024-12-11">Dec 11, 2024</time>
+              </div>
+            </li>
+            <li class="notif-item" aria-label="Read notification">
+              <div class="notif-icon notif-info">ℹ️</div>
+              <div class="notif-text">
+                <p><strong>Reminder:</strong> Complaint NC-2024-011 (Broken Streetlight) is now in the assigned stage. Expected resolution within 48 hours.</p>
+                <time class="notif-time" datetime="2024-12-10">Dec 10, 2024</time>
+              </div>
+            </li>
+          </ul>
+          <button class="btn btn-outline btn-full" aria-label="Mark all notifications as read">Mark All as Read</button>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">🛡️ NagrikConnect</span>
+        <p>Empowering Every Citizen. In Every Language.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="complaint-submission.html">Submit Complaint</a>
+          <a href="complaint-tracking.html">Track Complaint</a>
+          <a href="complaint-history.html">History</a>
+        </div>
+        <div class="footer-col">
+          <h4>Dashboards</h4>
+          <a href="citizen-dashboard.html">Citizen Dashboard</a>
+          <a href="admin-dashboard.html">Admin Dashboard</a>
+          <a href="authority-assignment.html">Authority Panel</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="support.html">Help Center</a>
+          <a href="login.html">Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 NagrikConnect. Empowering Citizens Through Technology.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

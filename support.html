@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NagrikConnect Help Center — Live chat support, FAQ, knowledge base and contact form for civic complaint assistance." />
+  <title>Support &amp; Help Center — NagrikConnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/support.css" />
+</head>
+<body class="support-page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🛡️ NagrikConnect</a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="complaint-submission.html" class="nav-link">Submit Complaint</a>
+        <a href="complaint-tracking.html" class="nav-link">Track Complaint</a>
+        <a href="complaint-history.html" class="nav-link">History</a>
+        <a href="admin-dashboard.html" class="nav-link">Admin</a>
+        <a href="support.html" class="nav-link active">Support</a>
+        <a href="login.html" class="nav-link btn-nav">Login</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="support-main" role="main">
+
+    <!-- SUPPORT HERO -->
+    <section class="support-hero" aria-label="Support page hero">
+      <div class="container">
+        <h1>🤝 How Can We Help You?</h1>
+        <p class="support-hero-desc">Get instant answers, chat with our support team, browse the knowledge base, or send us a message. We're here 24/7.</p>
+        <div class="support-hero-search" role="search">
+          <div class="input-wrapper hero-search-wrapper">
+            <span class="input-icon">🔍</span>
+            <input
+              type="search"
+              id="supportSearch"
+              class="form-input support-search-input"
+              placeholder="Search help articles… e.g., 'how to track complaint'"
+              aria-label="Search help articles"
+              aria-describedby="supportSearchHint"
+            />
+          </div>
+          <button class="btn btn-primary" id="supportSearchBtn" aria-label="Search support articles">Search</button>
+        </div>
+        <p class="field-hint" id="supportSearchHint">Try: "submit complaint", "tracking ID", "forgot password", "languages supported"</p>
+      </div>
+    </section>
+
+    <div class="support-grid container">
+
+      <!-- ===== CHAT SECTION ===== -->
+      <section class="support-section chat-section" aria-label="Live chat support">
+        <h2 class="support-section-title">💬 Live Chat Support</h2>
+        <p class="support-section-desc">Chat with our support bot or connect to a live agent. Available in English, Hindi, and Marathi.</p>
+
+        <div class="chat-widget glass-card" role="region" aria-label="Chat window">
+          <div class="chat-header">
+            <div class="chat-agent">
+              <div class="agent-avatar" aria-hidden="true">🤖</div>
+              <div class="agent-info">
+                <span class="agent-name">NagrikBot</span>
+                <span class="agent-status">🟢 Online — Responds instantly</span>
+              </div>
+            </div>
+            <div class="chat-actions">
+              <button class="chat-action-btn" id="requestHumanBtn" aria-label="Request a human support agent">👤 Human Agent</button>
+              <button class="chat-action-btn" id="clearChatBtn" aria-label="Clear chat history">🗑️ Clear</button>
+            </div>
+          </div>
+
+          <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Chat messages">
+            <div class="chat-msg bot-msg" aria-label="Bot message">
+              <div class="msg-avatar" aria-hidden="true">🤖</div>
+              <div class="msg-bubble">
+                <p>Namaste! 🙏 Welcome to NagrikConnect Support. I'm NagrikBot — your civic assistance companion.</p>
+                <p>How can I help you today? You can ask me about submitting complaints, tracking status, languages supported, or anything else!</p>
+                <time class="msg-time" datetime="2024-12-13T10:00">Just now</time>
+              </div>
+            </div>
+            <div class="chat-quick-replies" id="quickReplies" aria-label="Quick reply suggestions">
+              <button class="quick-reply-chip" data-msg="How do I submit a complaint?" aria-label="Quick reply: How do I submit a complaint?">📝 How to submit?</button>
+              <button class="quick-reply-chip" data-msg="How do I track my complaint?" aria-label="Quick reply: How to track a complaint?">🔍 Track complaint</button>
+              <button class="quick-reply-chip" data-msg="What languages are supported?" aria-label="Quick reply: Languages supported">🌐 Languages?</button>
+              <button class="quick-reply-chip" data-msg="I forgot my password" aria-label="Quick reply: Forgot password">🔒 Forgot password</button>
+              <button class="quick-reply-chip" data-msg="How long does resolution take?" aria-label="Quick reply: Resolution time">⏱️ Response time?</button>
+            </div>
+          </div>
+
+          <div class="chat-input-area">
+            <div class="chat-input-row">
+              <label for="chatInput" class="sr-only">Type your message</label>
+              <input
+                type="text"
+                id="chatInput"
+                class="form-input chat-input"
+                placeholder="Type your question in English, Hindi, or Marathi…"
+                aria-label="Type a message to support"
+                aria-describedby="chatInputHint"
+                maxlength="500"
+                autocomplete="off"
+              />
+              <button class="btn btn-primary chat-send-btn" id="chatSendBtn" aria-label="Send message">Send 📤</button>
+            </div>
+            <p class="field-hint" id="chatInputHint">Press Enter or click Send. Languages: English · हिंदी · मराठी</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FAQ SECTION ===== -->
+      <section class="support-section faq-section" aria-label="Frequently asked questions">
+        <h2 class="support-section-title">❓ Frequently Asked Questions</h2>
+        <p class="support-section-desc">Quick answers to the most common citizen questions about NagrikConnect.</p>
+
+        <div class="faq-list" id="faqList" role="list">
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-1-answer"
+              id="faq-1-btn"
+            >
+              <span>How do I submit a civic complaint on NagrikConnect?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-1-answer" class="faq-answer" role="region" aria-labelledby="faq-1-btn" hidden>
+              <p>Submitting a complaint is simple and takes less than 2 minutes:</p>
+              <ol>
+                <li>Click <strong>Submit Complaint</strong> from any page</li>
+                <li>Fill in Step 1: Enter a title, select the category (e.g., Sanitation, Noise), describe the issue, and set the priority</li>
+                <li>In Step 2: Upload photos as evidence and enter the exact location</li>
+                <li>Review your complaint in Step 3 and click <strong>Submit</strong></li>
+                <li>You will receive a unique Tracking ID via SMS and on screen</li>
+              </ol>
+              <p>You can also use <strong>Voice Input</strong> to speak your complaint instead of typing it.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-2-answer"
+              id="faq-2-btn"
+            >
+              <span>What is a Tracking ID and how do I use it?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-2-answer" class="faq-answer" role="region" aria-labelledby="faq-2-btn" hidden>
+              <p>When you submit a complaint, NagrikConnect automatically generates a unique <strong>Tracking ID</strong> in the format <code>NC-YYYY-XXX</code> (e.g., NC-2024-001). This ID is sent to your registered mobile number via SMS.</p>
+              <p>To track your complaint:</p>
+              <ol>
+                <li>Go to <a href="complaint-tracking.html">Track Complaint</a></li>
+                <li>Enter your Tracking ID in the search box</li>
+                <li>Click <strong>Track Now</strong> to see the full resolution timeline</li>
+              </ol>
+              <p>You do not need to be logged in to track a complaint — just your Tracking ID is sufficient.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-3-answer"
+              id="faq-3-btn"
+            >
+              <span>Which Indian languages does NagrikConnect support?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-3-answer" class="faq-answer" role="region" aria-labelledby="faq-3-btn" hidden>
+              <p>NagrikConnect currently supports <strong>12 Indian languages</strong>:</p>
+              <ul>
+                <li>🇬🇧 English</li>
+                <li>🇮🇳 Hindi (हिंदी)</li>
+                <li>Marathi (मराठी)</li>
+                <li>Tamil (தமிழ்)</li>
+                <li>Telugu (తెలుగు)</li>
+                <li>Bengali (বাংলা)</li>
+                <li>Gujarati (ગુજરાતી)</li>
+                <li>Kannada (ಕನ್ನಡ)</li>
+                <li>Malayalam (മലയാളം)</li>
+                <li>Punjabi (ਪੰਜਾਬੀ)</li>
+                <li>Urdu (اردو)</li>
+                <li>Odia (ଓଡ଼ିଆ)</li>
+              </ul>
+              <p>You can submit complaints by voice in any of these languages and the AI will auto-translate them for the handling department.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-4-answer"
+              id="faq-4-btn"
+            >
+              <span>How long does it take for my complaint to be resolved?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-4-answer" class="faq-answer" role="region" aria-labelledby="faq-4-btn" hidden>
+              <p>Resolution time depends on the <strong>priority</strong> and <strong>category</strong> of the complaint:</p>
+              <ul>
+                <li>🔴 <strong>Critical</strong> (e.g., sewage overflow, water main break): <strong>24–48 hours</strong></li>
+                <li>🟠 <strong>High</strong> (e.g., pothole causing accidents, power outage): <strong>3–5 days</strong></li>
+                <li>🟡 <strong>Medium</strong> (e.g., broken streetlight, noise): <strong>5–7 days</strong></li>
+                <li>🟢 <strong>Low</strong> (e.g., park bench damage): <strong>7–14 days</strong></li>
+              </ul>
+              <p>If a complaint is not resolved within its SLA, it is <strong>automatically escalated</strong> to a higher authority. The average resolution time across all categories is <strong>under 24 hours</strong> for acknowledged complaints.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-5-answer"
+              id="faq-5-btn"
+            >
+              <span>Can I submit a complaint anonymously?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-5-answer" class="faq-answer" role="region" aria-labelledby="faq-5-btn" hidden>
+              <p>Yes. In Step 2 of the complaint submission form, you will find a checkbox labelled <strong>"Submit Anonymously"</strong>. When selected, your personal details (name, phone number, email) will not be shared with any government authority or officer.</p>
+              <p>However, we recommend providing contact information so that you can receive status updates and be notified when your complaint is resolved. Your information is always stored securely and is never shared publicly.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-6-answer"
+              id="faq-6-btn"
+            >
+              <span>What happens if authorities ignore my complaint?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-6-answer" class="faq-answer" role="region" aria-labelledby="faq-6-btn" hidden>
+              <p>NagrikConnect has an automatic <strong>Smart Escalation System</strong> that monitors all complaints:</p>
+              <ol>
+                <li><strong>Day 1:</strong> Complaint submitted and assigned to local ward office</li>
+                <li><strong>SLA Deadline:</strong> If not resolved by deadline, automatic escalation to Municipal Commissioner</li>
+                <li><strong>+3 Days:</strong> Further escalation to District Collector if still unresolved</li>
+                <li><strong>+7 Days:</strong> Escalation to State-level Urban Development Ministry</li>
+              </ol>
+              <p>You will receive an SMS notification at each escalation stage. All escalations are logged publicly for accountability.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-7-answer"
+              id="faq-7-btn"
+            >
+              <span>How does Voice Input work for illiterate citizens?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-7-answer" class="faq-answer" role="region" aria-labelledby="faq-7-btn" hidden>
+              <p>The Voice Input feature is specifically designed for citizens who cannot read or write easily. Here's how it works:</p>
+              <ol>
+                <li>On the complaint submission page, select your preferred <strong>language</strong> from the dropdown</li>
+                <li>Click the <strong>🎤 Voice Input</strong> button next to the description field</li>
+                <li>A microphone will activate — speak clearly about the issue in your language</li>
+                <li>The system transcribes your speech to text automatically</li>
+                <li>Review the transcribed text and make corrections if needed</li>
+                <li>Submit the form as normal</li>
+              </ol>
+              <p>Voice input works on any modern smartphone — no app download required. It works entirely in the browser.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-controls="faq-8-answer"
+              id="faq-8-btn"
+            >
+              <span>Is my personal data safe on NagrikConnect?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-8-answer" class="faq-answer" role="region" aria-labelledby="faq-8-btn" hidden>
+              <p>Yes. NagrikConnect takes data privacy very seriously. Here's how your data is protected:</p>
+              <ul>
+                <li>🔒 All data is <strong>encrypted in transit and at rest</strong> (AES-256 / TLS 1.3)</li>
+                <li>🏛️ Hosted on <strong>NIC (National Informatics Centre) servers</strong> within India</li>
+                <li>📋 Compliant with the <strong>Digital Personal Data Protection Act, 2023</strong></li>
+                <li>🔐 Personal contact details are never shared publicly or with third parties</li>
+                <li>🗑️ You can request deletion of your account and all data at any time</li>
+              </ul>
+              <p>Complaint details (without personal info) may be shared with relevant government departments for resolution purposes only.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== CONTACT FORM ===== -->
+      <section class="support-section contact-section" aria-label="Contact support form">
+        <h2 class="support-section-title">📧 Send Us a Message</h2>
+        <p class="support-section-desc">Can't find what you're looking for? Our support team typically responds within 4 hours.</p>
+
+        <div class="contact-form-card glass-card">
+          <form class="contact-form" id="contactForm" novalidate aria-label="Contact support form">
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="supportContactName" class="form-label">Full Name <span class="required" aria-hidden="true">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">👤</span>
+                  <input
+                    type="text"
+                    id="supportContactName"
+                    name="name"
+                    class="form-input"
+                    placeholder="Your full name"
+                    required
+                    aria-required="true"
+                    aria-describedby="contactNameError"
+                  />
+                </div>
+                <span class="field-error" id="contactNameError" role="alert" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label for="contactEmailSupport" class="form-label">Email Address <span class="required" aria-hidden="true">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">📧</span>
+                  <input
+                    type="email"
+                    id="contactEmailSupport"
+                    name="email"
+                    class="form-input"
+                    placeholder="you@example.com"
+                    required
+                    aria-required="true"
+                    aria-describedby="contactEmailError"
+                  />
+                </div>
+                <span class="field-error" id="contactEmailError" role="alert" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contactSubject" class="form-label">Subject <span class="required" aria-hidden="true">*</span></label>
+              <select
+                id="contactSubject"
+                name="subject"
+                class="form-input form-select"
+                required
+                aria-required="true"
+                aria-describedby="subjectError"
+              >
+                <option value="">— Select a Subject —</option>
+                <option value="complaint-status">Complaint Status Inquiry</option>
+                <option value="lost-id">Lost / Forgotten Tracking ID</option>
+                <option value="technical">Technical Issue with Website</option>
+                <option value="language">Language Support Request</option>
+                <option value="account">Account / Login Issue</option>
+                <option value="escalation">Request Manual Escalation</option>
+                <option value="feedback">General Feedback or Suggestion</option>
+                <option value="media">Media / Press Inquiry</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="field-error" id="subjectError" role="alert" aria-live="polite"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contactComplaintId" class="form-label">Complaint ID <span class="optional-tag">(Optional)</span></label>
+              <input
+                type="text"
+                id="contactComplaintId"
+                name="complaintId"
+                class="form-input"
+                placeholder="e.g., NC-2024-001 (if your query is about a specific complaint)"
+                aria-label="Related complaint tracking ID"
+                pattern="NC-\d{4}-\d{3}"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage" class="form-label">Message <span class="required" aria-hidden="true">*</span></label>
+              <textarea
+                id="contactMessage"
+                name="message"
+                class="form-input"
+                rows="6"
+                placeholder="Describe your issue or question in detail. The more information you provide, the faster we can help you."
+                required
+                aria-required="true"
+                aria-describedby="messageError messageHelp"
+                maxlength="1000"
+              ></textarea>
+              <div class="desc-footer-row">
+                <span class="field-hint" id="messageHelp">Minimum 20 characters</span>
+                <span class="char-count" id="contactCharCount" aria-live="polite">0 / 1000</span>
+              </div>
+              <span class="field-error" id="messageError" role="alert" aria-live="polite"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="privacyConsent" id="privacyConsent" required aria-required="true" aria-describedby="privacyError" />
+                <span class="checkmark"></span>
+                I agree to the <a href="#" class="inline-link">Privacy Policy</a> and consent to NagrikConnect processing my message and contact details to respond to my query.
+              </label>
+              <span class="field-error" id="privacyError" role="alert" aria-live="polite"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full" id="contactSubmitBtn" aria-label="Send message to support team">
+              📤 Send Message
+            </button>
+
+          </form>
+
+          <!-- SUCCESS MESSAGE -->
+          <div class="contact-success" id="contactSuccess" hidden aria-live="polite" role="status">
+            <div class="success-icon" aria-hidden="true">✅</div>
+            <h3>Message Sent Successfully!</h3>
+            <p>Our support team will respond to your email (<strong id="confirmedEmail"></strong>) within 4 hours during business hours (9 AM – 8 PM IST, Mon–Sat).</p>
+            <p>Reference ID: <strong id="contactRefId"></strong></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== KNOWLEDGE BASE ===== -->
+      <section class="support-section kb-section" aria-label="Knowledge base categories">
+        <h2 class="support-section-title">📚 Knowledge Base</h2>
+        <p class="support-section-desc">Browse our comprehensive guides and tutorials covering all aspects of using NagrikConnect.</p>
+
+        <div class="kb-cards-grid">
+
+          <article class="kb-card glass-card" aria-label="Getting Started knowledge base category">
+            <div class="kb-icon">🚀</div>
+            <h3>Getting Started</h3>
+            <p>New to NagrikConnect? Learn how to create your account, submit your first complaint, and understand your citizen rights.</p>
+            <div class="kb-articles">
+              <a href="#" class="kb-article-link">Creating Your Citizen Account</a>
+              <a href="#" class="kb-article-link">Submitting Your First Complaint</a>
+              <a href="#" class="kb-article-link">Understanding Complaint Categories</a>
+            </div>
+            <span class="kb-count">8 Articles</span>
+          </article>
+
+          <article class="kb-card glass-card" aria-label="Complaint Tracking knowledge base category">
+            <div class="kb-icon">🔍</div>
+            <h3>Complaint Tracking</h3>
+            <p>Learn everything about tracking your complaint — from finding your Tracking ID to interpreting the timeline stages.</p>
+            <div class="kb-articles">
+              <a href="#" class="kb-article-link">How to Find Your Tracking ID</a>
+              <a href="#" class="kb-article-link">Understanding Timeline Stages</a>
+              <a href="#" class="kb-article-link">What Does 'Escalated' Mean?</a>
+            </div>
+            <span class="kb-count">6 Articles</span>
+          </article>
+
+          <article class="kb-card glass-card" aria-label="Multilingual Features knowledge base category">
+            <div class="kb-icon">🌐</div>
+            <h3>Multilingual Features</h3>
+            <p>Guides on using voice input, language selection, and how our AI translation engine works across 12 Indian languages.</p>
+            <div class="kb-articles">
+              <a href="#" class="kb-article-link">Using Voice Input Step-by-Step</a>
+              <a href="#" class="kb-article-link">Supported Languages List</a>
+              <a href="#" class="kb-article-link">AI Translation — How It Works</a>
+            </div>
+            <span class="kb-count">5 Articles</span>
+          </article>
+
+          <article class="kb-card glass-card" aria-label="Privacy and Security knowledge base category">
+            <div class="kb-icon">🔒</div>
+            <h3>Privacy &amp; Security</h3>
+            <p>Understand how your data is stored, protected, and used. Learn about anonymous submissions and data deletion.</p>
+            <div class="kb-articles">
+              <a href="#" class="kb-article-link">Data Privacy Policy Summary</a>
+              <a href="#" class="kb-article-link">Anonymous Complaint Guide</a>
+              <a href="#" class="kb-article-link">Requesting Account Deletion</a>
+            </div>
+            <span class="kb-count">4 Articles</span>
+          </article>
+
+          <article class="kb-card glass-card" aria-label="Account Management knowledge base category">
+            <div class="kb-icon">👤</div>
+            <h3>Account Management</h3>
+            <p>Password resets, profile updates, notification preferences, and managing your complaint history settings.</p>
+            <div class="kb-articles">
+              <a href="#" class="kb-article-link">Resetting Your Password</a>
+              <a href="#" class="kb-article-link">Updating Profile Information</a>
+              <a href="#" class="kb-article-link">Managing Notification Settings</a>
+            </div>
+            <span class="kb-count">5 Articles</span>
+          </article>
+
+          <article class="kb-card glass-card" aria-label="For Government Officials knowledge base category">
+            <div class="kb-icon">🏛️</div>
+            <h3>For Government Officials</h3>
+            <p>Admin portal guides for department heads — managing complaint queues, SLA configuration, escalation procedures, and generating reports.</p>
+            <div class="kb-articles">
+              <a href="#" class="kb-article-link">Admin Dashboard Overview</a>
+              <a href="#" class="kb-article-link">Assigning Complaints to Officers</a>
+              <a href="#" class="kb-article-link">Generating Monthly Reports</a>
+            </div>
+            <span class="kb-count">10 Articles</span>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- CONTACT CHANNELS STRIP -->
+    <section class="contact-channels" aria-label="Alternative contact channels">
+      <div class="container">
+        <h2 class="section-title-sm">📞 Other Ways to Reach Us</h2>
+        <div class="channels-grid">
+          <div class="channel-card" aria-label="Phone helpline">
+            <span class="channel-icon">📞</span>
+            <h4>Helpline</h4>
+            <p><strong>1800-XXX-NAGRIK</strong></p>
+            <p>Toll-free · Mon–Sat · 8 AM – 10 PM IST</p>
+          </div>
+          <div class="channel-card" aria-label="WhatsApp support">
+            <span class="channel-icon">💬</span>
+            <h4>WhatsApp</h4>
+            <p><strong>+91 98XXX XXXXX</strong></p>
+            <p>24/7 automated · Human: 9 AM – 9 PM</p>
+          </div>
+          <div class="channel-card" aria-label="Email support">
+            <span class="channel-icon">📧</span>
+            <h4>Email Support</h4>
+            <p><strong>support@nagrikconnect.in</strong></p>
+            <p>Response within 4 hours on working days</p>
+          </div>
+          <div class="channel-card" aria-label="Physical office address">
+            <span class="channel-icon">🏢</span>
+            <h4>Head Office</h4>
+            <p><strong>NagrikConnect, NIC Building</strong></p>
+            <p>New Delhi · Mon–Fri · 10 AM – 5 PM</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">🛡️ NagrikConnect</span>
+        <p>Empowering Every Citizen. In Every Language.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="complaint-submission.html">Submit Complaint</a>
+          <a href="complaint-tracking.html">Track Complaint</a>
+          <a href="complaint-history.html">History</a>
+        </div>
+        <div class="footer-col">
+          <h4>Dashboards</h4>
+          <a href="citizen-dashboard.html">Citizen Dashboard</a>
+          <a href="admin-dashboard.html">Admin Dashboard</a>
+          <a href="authority-assignment.html">Authority Panel</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="support.html">Help Center</a>
+          <a href="login.html">Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 NagrikConnect. Empowering Citizens Through Technology.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/support.js"></script>
+</body>
+</html>

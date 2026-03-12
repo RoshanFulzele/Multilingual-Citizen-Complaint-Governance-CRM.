@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Login to NagrikConnect — Access your citizen or admin account to manage civic complaints." />
+  <title>Login — NagrikConnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body class="login-page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🛡️ NagrikConnect</a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="complaint-submission.html" class="nav-link">Submit Complaint</a>
+        <a href="complaint-tracking.html" class="nav-link">Track Complaint</a>
+        <a href="complaint-history.html" class="nav-link">History</a>
+        <a href="admin-dashboard.html" class="nav-link">Admin</a>
+        <a href="support.html" class="nav-link">Support</a>
+        <a href="login.html" class="nav-link btn-nav active">Login</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ANIMATED BG -->
+  <div class="login-bg" aria-hidden="true">
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+    <div class="bg-grid"></div>
+  </div>
+
+  <!-- LOGIN MAIN -->
+  <main class="login-main" role="main">
+    <div class="login-wrapper">
+
+      <!-- BRANDING SIDE -->
+      <aside class="login-branding" aria-label="Platform information">
+        <div class="brand-content">
+          <div class="brand-logo">🛡️</div>
+          <h1 class="brand-title">NagrikConnect</h1>
+          <p class="brand-tagline">Your Gateway to Civic Governance</p>
+          <ul class="brand-features" aria-label="Platform features">
+            <li><span class="bf-icon">🌐</span> Available in 12 Indian Languages</li>
+            <li><span class="bf-icon">📍</span> Real-time Complaint Tracking</li>
+            <li><span class="bf-icon">⚡</span> 24-hour Average Response Time</li>
+            <li><span class="bf-icon">🔒</span> Secure &amp; Encrypted Data</li>
+            <li><span class="bf-icon">🤖</span> AI-Powered Smart Routing</li>
+          </ul>
+          <div class="brand-stat-row">
+            <div class="brand-stat">
+              <span class="bs-num">50K+</span>
+              <span class="bs-lbl">Resolved</span>
+            </div>
+            <div class="brand-stat">
+              <span class="bs-num">95%</span>
+              <span class="bs-lbl">Success Rate</span>
+            </div>
+            <div class="brand-stat">
+              <span class="bs-num">12</span>
+              <span class="bs-lbl">Languages</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- LOGIN CARD -->
+      <section class="login-card-section" aria-label="Login form">
+        <div class="login-card glass-card">
+
+          <!-- TABS -->
+          <div class="login-tabs" role="tablist" aria-label="Login type">
+            <button
+              class="login-tab active"
+              id="tab-citizen"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-citizen"
+              data-tab="citizen"
+            >
+              👤 Citizen Login
+            </button>
+            <button
+              class="login-tab"
+              id="tab-admin"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-admin"
+              data-tab="admin"
+            >
+              🛡️ Admin Login
+            </button>
+          </div>
+
+          <!-- CITIZEN PANEL -->
+          <div id="panel-citizen" role="tabpanel" aria-labelledby="tab-citizen" class="tab-panel active">
+            <div class="login-header">
+              <h2>Welcome Back, Citizen</h2>
+              <p>Sign in to manage your complaints and track resolutions</p>
+            </div>
+
+            <form class="login-form" id="citizenLoginForm" novalidate aria-label="Citizen login form">
+              <div class="form-group">
+                <label for="citizenEmail" class="form-label">Email Address</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">📧</span>
+                  <input
+                    type="email"
+                    id="citizenEmail"
+                    name="email"
+                    class="form-input"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                    aria-required="true"
+                    aria-describedby="citizenEmailError"
+                  />
+                </div>
+                <span class="field-error" id="citizenEmailError" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="citizenPassword" class="form-label">Password</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">🔒</span>
+                  <input
+                    type="password"
+                    id="citizenPassword"
+                    name="password"
+                    class="form-input"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                    aria-required="true"
+                    aria-describedby="citizenPasswordError"
+                  />
+                  <button type="button" class="toggle-password" aria-label="Show/hide password" data-target="citizenPassword">👁️</button>
+                </div>
+                <span class="field-error" id="citizenPasswordError" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form-row-inline">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="rememberMe" name="rememberMe" />
+                  <span class="checkmark"></span>
+                  Remember me
+                </label>
+                <a href="#" class="forgot-link">Forgot Password?</a>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full login-btn" aria-label="Sign in as citizen">
+                <span class="btn-text">Sign In</span>
+                <span class="btn-loader" aria-hidden="true" hidden>⏳</span>
+              </button>
+
+              <div class="divider"><span>or continue with</span></div>
+
+              <button type="button" class="btn btn-google btn-full" aria-label="Sign in with Google">
+                <svg class="google-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                Continue with Google
+              </button>
+
+              <p class="register-prompt">
+                Don't have an account? <a href="#" class="register-link">Register as Citizen</a>
+              </p>
+            </form>
+
+            <div class="demo-credentials" aria-label="Demo credentials">
+              <div class="demo-header">🧪 Demo Credentials</div>
+              <div class="demo-row"><span class="demo-key">Email:</span><code>citizen@demo.nagrik.in</code></div>
+              <div class="demo-row"><span class="demo-key">Password:</span><code>Citizen@123</code></div>
+            </div>
+          </div>
+
+          <!-- ADMIN PANEL -->
+          <div id="panel-admin" role="tabpanel" aria-labelledby="tab-admin" class="tab-panel" hidden>
+            <div class="login-header">
+              <h2>Admin Access Portal</h2>
+              <p>Authorised government officials only — secure login required</p>
+            </div>
+
+            <form class="login-form" id="adminLoginForm" novalidate aria-label="Admin login form">
+              <div class="form-group">
+                <label for="adminEmail" class="form-label">Official Email Address</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">📧</span>
+                  <input
+                    type="email"
+                    id="adminEmail"
+                    name="email"
+                    class="form-input"
+                    placeholder="admin@gov.in"
+                    autocomplete="email"
+                    required
+                    aria-required="true"
+                    aria-describedby="adminEmailError"
+                  />
+                </div>
+                <span class="field-error" id="adminEmailError" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="adminPassword" class="form-label">Password</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">🔒</span>
+                  <input
+                    type="password"
+                    id="adminPassword"
+                    name="password"
+                    class="form-input"
+                    placeholder="Enter secure password"
+                    autocomplete="current-password"
+                    required
+                    aria-required="true"
+                    aria-describedby="adminPasswordError"
+                  />
+                  <button type="button" class="toggle-password" aria-label="Show/hide password" data-target="adminPassword">👁️</button>
+                </div>
+                <span class="field-error" id="adminPasswordError" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="adminOtp" class="form-label">OTP Verification <span class="optional-tag">(2FA)</span></label>
+                <div class="input-wrapper otp-wrapper">
+                  <span class="input-icon">🔢</span>
+                  <input
+                    type="text"
+                    id="adminOtp"
+                    name="otp"
+                    class="form-input"
+                    placeholder="6-digit OTP"
+                    maxlength="6"
+                    inputmode="numeric"
+                    pattern="[0-9]{6}"
+                    autocomplete="one-time-code"
+                    aria-describedby="adminOtpError"
+                  />
+                  <button type="button" class="send-otp-btn" aria-label="Send OTP to registered mobile">Send OTP</button>
+                </div>
+                <span class="field-error" id="adminOtpError" role="alert" aria-live="polite"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full login-btn admin-login-btn" aria-label="Sign in as admin">
+                <span class="btn-text">🛡️ Secure Admin Login</span>
+                <span class="btn-loader" aria-hidden="true" hidden>⏳</span>
+              </button>
+
+              <p class="admin-note">
+                🔒 This portal is monitored. Unauthorised access is a criminal offence under IT Act 2000, Section 43 &amp; 66.
+              </p>
+            </form>
+
+            <div class="demo-credentials" aria-label="Admin demo credentials">
+              <div class="demo-header">🧪 Demo Admin Credentials</div>
+              <div class="demo-row"><span class="demo-key">Email:</span><code>admin@demo.nagrik.in</code></div>
+              <div class="demo-row"><span class="demo-key">Password:</span><code>Admin@Secure123</code></div>
+              <div class="demo-row"><span class="demo-key">OTP:</span><code>123456</code></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">🛡️ NagrikConnect</span>
+        <p>Empowering Every Citizen. In Every Language.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="complaint-submission.html">Submit Complaint</a>
+          <a href="complaint-tracking.html">Track Complaint</a>
+          <a href="complaint-history.html">History</a>
+        </div>
+        <div class="footer-col">
+          <h4>Dashboards</h4>
+          <a href="citizen-dashboard.html">Citizen Dashboard</a>
+          <a href="admin-dashboard.html">Admin Dashboard</a>
+          <a href="authority-assignment.html">Authority Panel</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="support.html">Help Center</a>
+          <a href="login.html">Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 NagrikConnect. Empowering Citizens Through Technology.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Track the real-time status of your civic complaint on NagrikConnect using your Tracking ID." />
+  <title>Track Complaint — NagrikConnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/tracking.css" />
+</head>
+<body class="tracking-page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🛡️ NagrikConnect</a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="complaint-submission.html" class="nav-link">Submit Complaint</a>
+        <a href="complaint-tracking.html" class="nav-link active">Track Complaint</a>
+        <a href="complaint-history.html" class="nav-link">History</a>
+        <a href="admin-dashboard.html" class="nav-link">Admin</a>
+        <a href="support.html" class="nav-link">Support</a>
+        <a href="login.html" class="nav-link btn-nav">Login</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="tracking-main" role="main">
+    <div class="tracking-container">
+
+      <!-- PAGE HEADER -->
+      <header class="tracking-header">
+        <h1>🔍 Track Your Complaint</h1>
+        <p>Enter your complaint tracking ID to view the real-time status, department responses, and resolution progress.</p>
+      </header>
+
+      <!-- SEARCH BAR -->
+      <section class="search-section" aria-label="Complaint tracking search">
+        <div class="search-card glass-card">
+          <div class="search-bar" role="search">
+            <label for="trackingId" class="search-label">Enter Tracking ID</label>
+            <div class="search-input-row">
+              <div class="input-wrapper search-input-wrapper">
+                <span class="input-icon">🏷️</span>
+                <input
+                  type="text"
+                  id="trackingId"
+                  class="form-input search-input"
+                  placeholder="Enter your Tracking ID (e.g., NC-2024-001)"
+                  aria-label="Complaint tracking ID"
+                  aria-describedby="searchHelp searchError"
+                  autocomplete="off"
+                  spellcheck="false"
+                  maxlength="20"
+                />
+              </div>
+              <button
+                type="button"
+                class="btn btn-primary search-btn"
+                id="searchBtn"
+                aria-label="Search for complaint status"
+              >
+                🔍 Track Now
+              </button>
+            </div>
+            <span class="field-hint" id="searchHelp">Your tracking ID was sent via SMS when you filed the complaint</span>
+            <span class="field-error" id="searchError" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="sample-ids" aria-label="Sample tracking IDs to try">
+            <span class="sample-label">Try a demo ID:</span>
+            <button class="sample-chip" data-id="NC-2024-001" aria-label="Try tracking ID NC-2024-001">NC-2024-001</button>
+            <button class="sample-chip" data-id="NC-2024-005" aria-label="Try tracking ID NC-2024-005">NC-2024-005</button>
+            <button class="sample-chip" data-id="NC-2024-009" aria-label="Try tracking ID NC-2024-009">NC-2024-009</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRACKING RESULT (hidden initially) -->
+      <section class="tracking-result" id="trackingResult" hidden aria-live="polite" aria-label="Complaint tracking result">
+
+        <!-- COMPLAINT SUMMARY CARD -->
+        <div class="complaint-summary-card glass-card">
+          <div class="cs-header">
+            <div class="cs-id-badge" id="resultTrackingId">NC-2024-001</div>
+            <div class="cs-status-badge" id="resultStatus">In Progress</div>
+          </div>
+          <div class="cs-body">
+            <div class="cs-detail-grid">
+              <div class="cs-detail">
+                <span class="cs-detail-label">Complaint Title</span>
+                <span class="cs-detail-value" id="resultTitle">Overflowing drain blocking Nehru Nagar Road</span>
+              </div>
+              <div class="cs-detail">
+                <span class="cs-detail-label">Category</span>
+                <span class="cs-detail-value" id="resultCategory">🌊 Sanitation &amp; Drainage</span>
+              </div>
+              <div class="cs-detail">
+                <span class="cs-detail-label">Priority</span>
+                <span class="cs-detail-value" id="resultPriority">
+                  <span class="priority-badge priority-high">🟠 High</span>
+                </span>
+              </div>
+              <div class="cs-detail">
+                <span class="cs-detail-label">Filed On</span>
+                <span class="cs-detail-value" id="resultDate">December 10, 2024</span>
+              </div>
+              <div class="cs-detail">
+                <span class="cs-detail-label">Location</span>
+                <span class="cs-detail-value" id="resultLocation">📍 Nehru Nagar, Kurla West, Mumbai 400070</span>
+              </div>
+              <div class="cs-detail">
+                <span class="cs-detail-label">Assigned To</span>
+                <span class="cs-detail-value" id="resultAssigned">BMC Sanitation Dept., Ward L</span>
+              </div>
+              <div class="cs-detail">
+                <span class="cs-detail-label">Expected Resolution</span>
+                <span class="cs-detail-value" id="resultDeadline">December 17, 2024 (SLA: 7 days)</span>
+              </div>
+              <div class="cs-detail">
+                <span class="cs-detail-label">Submitted By</span>
+                <span class="cs-detail-value" id="resultCitizen">Rahul S. (Citizen)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROGRESS BAR -->
+        <div class="overall-progress-section" aria-label="Overall complaint progress">
+          <div class="op-header">
+            <span class="op-label">Overall Progress</span>
+            <span class="op-percent" id="progressPercent">60%</span>
+          </div>
+          <div class="overall-progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Complaint resolution progress">
+            <div class="overall-progress-fill" id="progressFill" style="width: 60%"></div>
+          </div>
+        </div>
+
+        <!-- VERTICAL TIMELINE -->
+        <div class="timeline-section" aria-label="Complaint progress timeline">
+          <h2 class="section-title-sm">📅 Resolution Timeline</h2>
+          <ol class="tracking-timeline" aria-label="Complaint stages">
+
+            <li class="timeline-stage stage-complete" id="stage1" aria-label="Stage 1: Complaint Submitted — Completed">
+              <div class="ts-connector ts-connector-top" aria-hidden="true"></div>
+              <div class="ts-dot ts-dot-complete" aria-hidden="true">✅</div>
+              <div class="ts-content">
+                <div class="ts-header">
+                  <h3 class="ts-title">Complaint Submitted</h3>
+                  <span class="ts-status ts-status-complete">Completed</span>
+                </div>
+                <p class="ts-desc">Your complaint was successfully received and assigned a unique tracking ID (NC-2024-001).</p>
+                <div class="ts-meta">
+                  <time class="ts-time" datetime="2024-12-10T09:12">Dec 10, 2024 · 9:12 AM</time>
+                  <span class="ts-dept">📱 NagrikConnect System</span>
+                </div>
+              </div>
+              <div class="ts-connector ts-connector-bottom" aria-hidden="true"></div>
+            </li>
+
+            <li class="timeline-stage stage-complete" id="stage2" aria-label="Stage 2: Assigned to Local Office — Completed">
+              <div class="ts-connector ts-connector-top" aria-hidden="true"></div>
+              <div class="ts-dot ts-dot-complete" aria-hidden="true">🏢</div>
+              <div class="ts-content">
+                <div class="ts-header">
+                  <h3 class="ts-title">Assigned to Local Office</h3>
+                  <span class="ts-status ts-status-complete">Completed</span>
+                </div>
+                <p class="ts-desc">Complaint automatically routed and assigned to BMC Ward L Sanitation Officer Mr. Deepak Patil for review.</p>
+                <div class="ts-meta">
+                  <time class="ts-time" datetime="2024-12-10T10:05">Dec 10, 2024 · 10:05 AM</time>
+                  <span class="ts-dept">🏢 BMC Ward L Office</span>
+                </div>
+                <div class="ts-officer-card" aria-label="Assigned officer details">
+                  <span class="officer-avatar" aria-hidden="true">👤</span>
+                  <div>
+                    <span class="officer-name">Deepak Patil</span>
+                    <span class="officer-role">Ward Sanitation Officer</span>
+                  </div>
+                </div>
+              </div>
+              <div class="ts-connector ts-connector-bottom" aria-hidden="true"></div>
+            </li>
+
+            <li class="timeline-stage stage-active" id="stage3" aria-label="Stage 3: Processing by Department — Currently Active" aria-current="true">
+              <div class="ts-connector ts-connector-top" aria-hidden="true"></div>
+              <div class="ts-dot ts-dot-active" aria-hidden="true">⚙️</div>
+              <div class="ts-content">
+                <div class="ts-header">
+                  <h3 class="ts-title">Processing by Department</h3>
+                  <span class="ts-status ts-status-active">In Progress</span>
+                </div>
+                <p class="ts-desc">The BMC Sanitation team has visited the site and assessed the issue. A work order has been issued for drain clearance. Team expected to begin work by Dec 14.</p>
+                <div class="ts-meta">
+                  <time class="ts-time" datetime="2024-12-11T14:30">Dec 11, 2024 · 2:30 PM</time>
+                  <span class="ts-dept">⚙️ BMC Sanitation Department</span>
+                </div>
+                <div class="ts-update-box" aria-label="Latest department update">
+                  <p><strong>Latest Update (Dec 12):</strong> Site inspection completed. Heavy blockage confirmed. Drain clearance team scheduled for Dec 14 morning.</p>
+                </div>
+              </div>
+              <div class="ts-connector ts-connector-bottom" aria-hidden="true"></div>
+            </li>
+
+            <li class="timeline-stage stage-pending" id="stage4" aria-label="Stage 4: Escalated to Head Department — Pending">
+              <div class="ts-connector ts-connector-top" aria-hidden="true"></div>
+              <div class="ts-dot ts-dot-pending" aria-hidden="true">⬆️</div>
+              <div class="ts-content">
+                <div class="ts-header">
+                  <h3 class="ts-title">Escalated to Head Department</h3>
+                  <span class="ts-status ts-status-pending">Pending</span>
+                </div>
+                <p class="ts-desc">This stage is triggered automatically if the complaint remains unresolved past its SLA deadline. The complaint will escalate to the Municipal Commissioner's Office.</p>
+                <div class="ts-meta">
+                  <span class="ts-time">Triggered if unresolved by Dec 17, 2024</span>
+                  <span class="ts-dept">⬆️ Municipal Commissioner's Office</span>
+                </div>
+              </div>
+              <div class="ts-connector ts-connector-bottom" aria-hidden="true"></div>
+            </li>
+
+            <li class="timeline-stage stage-pending" id="stage5" aria-label="Stage 5: Issue Resolved — Pending">
+              <div class="ts-connector ts-connector-top" aria-hidden="true"></div>
+              <div class="ts-dot ts-dot-pending" aria-hidden="true">✅</div>
+              <div class="ts-content">
+                <div class="ts-header">
+                  <h3 class="ts-title">Issue Resolved</h3>
+                  <span class="ts-status ts-status-pending">Awaiting Completion</span>
+                </div>
+                <p class="ts-desc">Once the drain is cleared and verified, the complaint will be marked as resolved. You will receive an SMS notification and can rate the resolution quality.</p>
+                <div class="ts-meta">
+                  <span class="ts-time">Target: December 17, 2024</span>
+                  <span class="ts-dept">✅ NagrikConnect System</span>
+                </div>
+              </div>
+            </li>
+
+          </ol>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="tracking-actions" aria-label="Complaint action buttons">
+          <button class="btn btn-outline" id="addCommentBtn" aria-label="Add a follow-up comment to this complaint">
+            💬 Add Comment
+          </button>
+          <button class="btn btn-outline" id="shareBtn" aria-label="Share this complaint status">
+            📤 Share Status
+          </button>
+          <button class="btn btn-secondary" id="printBtn" aria-label="Print complaint details">
+            🖨️ Print Details
+          </button>
+          <a href="complaint-submission.html" class="btn btn-primary" aria-label="Submit a new complaint">
+            📝 New Complaint
+          </a>
+        </div>
+
+      </section>
+
+      <!-- NOT FOUND MESSAGE (hidden initially) -->
+      <div class="tracking-not-found" id="notFoundMessage" hidden aria-live="polite" role="status">
+        <div class="nf-icon" aria-hidden="true">🔎</div>
+        <h2>Complaint Not Found</h2>
+        <p>No complaint was found with the ID <strong id="searchedId"></strong>. Please check the ID and try again, or contact our support team for assistance.</p>
+        <div class="nf-actions">
+          <a href="support.html" class="btn btn-primary" aria-label="Contact support">Get Help</a>
+          <a href="complaint-submission.html" class="btn btn-outline" aria-label="Submit a new complaint">Submit New Complaint</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">🛡️ NagrikConnect</span>
+        <p>Empowering Every Citizen. In Every Language.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="complaint-submission.html">Submit Complaint</a>
+          <a href="complaint-tracking.html">Track Complaint</a>
+          <a href="complaint-history.html">History</a>
+        </div>
+        <div class="footer-col">
+          <h4>Dashboards</h4>
+          <a href="citizen-dashboard.html">Citizen Dashboard</a>
+          <a href="admin-dashboard.html">Admin Dashboard</a>
+          <a href="authority-assignment.html">Authority Panel</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="support.html">Help Center</a>
+          <a href="login.html">Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 NagrikConnect. Empowering Citizens Through Technology.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/tracking.js"></script>
+</body>
+</html>
