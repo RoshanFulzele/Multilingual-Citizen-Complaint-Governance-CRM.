@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Authority Assignment Panel — Assign civic complaints to departments and escalate critical issues." />
+  <title>Authority Assignment — NagrikConnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/assignment.css" />
+</head>
+<body class="assignment-page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🛡️ NagrikConnect</a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="complaint-submission.html" class="nav-link">Submit Complaint</a>
+        <a href="complaint-tracking.html" class="nav-link">Track Complaint</a>
+        <a href="complaint-history.html" class="nav-link">History</a>
+        <a href="admin-dashboard.html" class="nav-link">Admin</a>
+        <a href="support.html" class="nav-link">Support</a>
+        <a href="login.html" class="nav-link btn-nav">Login</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="assignment-main" role="main">
+    <div class="assignment-container">
+
+      <!-- PAGE HEADER -->
+      <header class="assignment-header">
+        <div>
+          <h1>👮 Authority Assignment Panel</h1>
+          <p>Assign unresolved civic complaints to the appropriate departments and officers. Escalate critical cases to higher authorities.</p>
+        </div>
+        <div class="header-badge-row">
+          <span class="header-badge badge-red" aria-label="18 unassigned complaints requiring action">18 Unassigned</span>
+          <span class="header-badge badge-yellow" aria-label="5 complaints overdue for assignment">5 Overdue</span>
+          <a href="admin-dashboard.html" class="btn btn-outline" aria-label="Back to Admin Dashboard">← Admin Dashboard</a>
+        </div>
+      </header>
+
+      <!-- SPLIT LAYOUT -->
+      <div class="split-layout">
+
+        <!-- ===== LEFT PANEL: UNASSIGNED COMPLAINTS ===== -->
+        <section class="split-panel left-panel" aria-label="Unassigned complaints list">
+          <div class="panel-header">
+            <h2>📋 Unassigned Complaints</h2>
+            <span class="panel-count" id="unassignedCount" aria-live="polite">18 complaints</span>
+          </div>
+
+          <!-- FILTER BAR -->
+          <div class="panel-filter-bar" aria-label="Filter unassigned complaints">
+            <div class="input-wrapper search-wrapper">
+              <span class="input-icon">🔍</span>
+              <input
+                type="search"
+                id="assignSearchInput"
+                class="form-input filter-input"
+                placeholder="Search by title, ID, or ward…"
+                aria-label="Search unassigned complaints"
+                aria-controls="unassignedList"
+              />
+            </div>
+            <select id="assignCategoryFilter" class="form-input form-select filter-select" aria-label="Filter by category" aria-controls="unassignedList">
+              <option value="">All Categories</option>
+              <option value="sanitation">Sanitation</option>
+              <option value="road">Road Damage</option>
+              <option value="noise">Noise</option>
+              <option value="construction">Construction</option>
+              <option value="water">Water Supply</option>
+              <option value="animals">Street Animals</option>
+            </select>
+            <select id="assignPriorityFilter" class="form-input form-select filter-select" aria-label="Filter by priority" aria-controls="unassignedList">
+              <option value="">All Priorities</option>
+              <option value="critical">Critical</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+
+          <!-- COMPLAINT CARDS LIST -->
+          <ol class="unassigned-list" id="unassignedList" aria-label="List of unassigned complaints" aria-live="polite">
+
+            <li class="assign-card assign-card--active" id="assignCard-NC2024015" data-complaint-id="NC-2024-015" aria-selected="true" role="option" tabindex="0">
+              <div class="ac-header">
+                <span class="ac-id">NC-2024-015</span>
+                <span class="priority-badge priority-critical">🔴 Critical</span>
+              </div>
+              <h3 class="ac-title">Raw Sewage Overflow on Dharavi Main Road</h3>
+              <p class="ac-desc">Sewage pipe burst causing overflow onto main road. Severe health hazard. Multiple residents affected including children.</p>
+              <div class="ac-meta">
+                <span class="ac-cat">🌊 Sanitation</span>
+                <span class="ac-ward">Ward G/N · Dharavi</span>
+                <time class="ac-date" datetime="2024-12-13">Dec 13, 2024</time>
+              </div>
+              <div class="ac-chips">
+                <span class="ac-chip chip-age">2 hours ago</span>
+                <span class="ac-chip chip-evidence">📸 3 Photos</span>
+                <span class="ac-chip chip-voice">🎤 Voice Note</span>
+              </div>
+            </li>
+
+            <li class="assign-card" id="assignCard-NC2024016" data-complaint-id="NC-2024-016" role="option" tabindex="0">
+              <div class="ac-header">
+                <span class="ac-id">NC-2024-016</span>
+                <span class="priority-badge priority-high">🟠 High</span>
+              </div>
+              <h3 class="ac-title">Deep Potholes on Airport Road Causing Accidents</h3>
+              <p class="ac-desc">Multiple deep potholes on the road to the airport causing vehicular damage and two reported minor accidents this week.</p>
+              <div class="ac-meta">
+                <span class="ac-cat">🛣️ Road Damage</span>
+                <span class="ac-ward">Ward T · Andheri East</span>
+                <time class="ac-date" datetime="2024-12-13">Dec 13, 2024</time>
+              </div>
+              <div class="ac-chips">
+                <span class="ac-chip chip-age">5 hours ago</span>
+                <span class="ac-chip chip-evidence">📸 2 Photos</span>
+              </div>
+            </li>
+
+            <li class="assign-card" id="assignCard-NC2024017" data-complaint-id="NC-2024-017" role="option" tabindex="0">
+              <div class="ac-header">
+                <span class="ac-id">NC-2024-017</span>
+                <span class="priority-badge priority-high">🟠 High</span>
+              </div>
+              <h3 class="ac-title">Illegal Scrapyard Dumping Toxic Waste</h3>
+              <p class="ac-desc">Unauthorized scrapyard near residential colony dumping chemical waste in open land, causing foul smell and health concerns.</p>
+              <div class="ac-meta">
+                <span class="ac-cat">🏭 Pollution</span>
+                <span class="ac-ward">Ward M/W · Chembur</span>
+                <time class="ac-date" datetime="2024-12-12">Dec 12, 2024</time>
+              </div>
+              <div class="ac-chips">
+                <span class="ac-chip chip-age">1 day ago</span>
+                <span class="ac-chip chip-evidence">📸 5 Photos</span>
+              </div>
+            </li>
+
+            <li class="assign-card" id="assignCard-NC2024018" data-complaint-id="NC-2024-018" role="option" tabindex="0">
+              <div class="ac-header">
+                <span class="ac-id">NC-2024-018</span>
+                <span class="priority-badge priority-medium">🟡 Medium</span>
+              </div>
+              <h3 class="ac-title">Public Park Benches Damaged, Unsafe for Elderly</h3>
+              <p class="ac-desc">Multiple park benches in the municipal garden have rusted and broken frames. Elderly and children using the park are at risk of injury.</p>
+              <div class="ac-meta">
+                <span class="ac-cat">🌳 Parks &amp; Gardens</span>
+                <span class="ac-ward">Ward H/E · Bandra East</span>
+                <time class="ac-date" datetime="2024-12-12">Dec 12, 2024</time>
+              </div>
+              <div class="ac-chips">
+                <span class="ac-chip chip-age">1 day ago</span>
+                <span class="ac-chip chip-evidence">📸 1 Photo</span>
+              </div>
+            </li>
+
+            <li class="assign-card" id="assignCard-NC2024019" data-complaint-id="NC-2024-019" role="option" tabindex="0">
+              <div class="ac-header">
+                <span class="ac-id">NC-2024-019</span>
+                <span class="priority-badge priority-medium">🟡 Medium</span>
+              </div>
+              <h3 class="ac-title">No Water Supply for 3 Days in Building Complex</h3>
+              <p class="ac-desc">Water supply has been completely cut to a 12-floor residential building due to what appears to be an unrepaired main line break on the street below.</p>
+              <div class="ac-meta">
+                <span class="ac-cat">💧 Water Supply</span>
+                <span class="ac-ward">Ward N · Ghatkopar</span>
+                <time class="ac-date" datetime="2024-12-11">Dec 11, 2024</time>
+              </div>
+              <div class="ac-chips">
+                <span class="ac-chip chip-age">2 days ago</span>
+                <span class="ac-chip chip-overdue">⚠️ Overdue</span>
+              </div>
+            </li>
+
+          </ol>
+        </section>
+
+        <!-- ===== RIGHT PANEL: ASSIGNMENT FORM + ESCALATION ===== -->
+        <section class="split-panel right-panel" aria-label="Assignment and escalation panel">
+
+          <!-- SELECTED COMPLAINT PREVIEW -->
+          <div class="selected-preview glass-card" id="selectedPreview" aria-label="Selected complaint preview" aria-live="polite">
+            <div class="sp-badge" aria-hidden="true">📌 Selected</div>
+            <div class="sp-id" id="spId">NC-2024-015</div>
+            <h3 class="sp-title" id="spTitle">Raw Sewage Overflow on Dharavi Main Road</h3>
+            <div class="sp-meta">
+              <span class="sp-category" id="spCategory">🌊 Sanitation</span>
+              <span class="sp-priority" id="spPriority">🔴 Critical</span>
+              <span class="sp-date" id="spDate">Dec 13, 2024</span>
+            </div>
+            <p class="sp-desc" id="spDesc">Sewage pipe burst causing overflow onto main road. Severe health hazard. Multiple residents affected including children.</p>
+          </div>
+
+          <!-- ASSIGNMENT FORM -->
+          <div class="assignment-form-card glass-card">
+            <h2 class="panel-section-title">📋 Assign to Department</h2>
+            <form class="assignment-form" id="assignmentForm" novalidate aria-label="Authority assignment form">
+
+              <input type="hidden" id="selectedComplaintId" value="NC-2024-015" />
+
+              <div class="form-group">
+                <label for="deptSelect" class="form-label">Department <span class="required" aria-hidden="true">*</span></label>
+                <select id="deptSelect" class="form-input form-select" required aria-required="true" aria-describedby="deptError">
+                  <option value="">— Select Department —</option>
+                  <option value="sanitation">🌊 BMC Sanitation &amp; Drainage</option>
+                  <option value="roads">🛣️ PWD Roads &amp; Infrastructure</option>
+                  <option value="water">💧 Water Supply &amp; Sewerage Board</option>
+                  <option value="electricity">⚡ MSEDCL / Electricity Dept.</option>
+                  <option value="police">🚔 Mumbai Police / Traffic</option>
+                  <option value="health">🏥 Municipal Health Department</option>
+                  <option value="parks">🌳 Parks &amp; Garden Dept.</option>
+                  <option value="fire">🚒 Fire Brigade</option>
+                  <option value="planning">🏗️ Planning &amp; Development Authority</option>
+                  <option value="animals">🐕 Animal Control Cell</option>
+                </select>
+                <span class="field-error" id="deptError" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="officerSelect" class="form-label">Assign to Officer</label>
+                <select id="officerSelect" class="form-input form-select" aria-label="Select officer for assignment">
+                  <option value="">— Auto-assign by workload —</option>
+                  <option value="deepak">Deepak Patil (Ward G/N Sanitation Officer)</option>
+                  <option value="priya">Priya Sawant (Senior Sanitation Inspector)</option>
+                  <option value="ravi">Ravi Kumar (Assistant Commissioner)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="slaDays" class="form-label">SLA Deadline (days) <span class="required" aria-hidden="true">*</span></label>
+                <div class="sla-input-row">
+                  <input
+                    type="number"
+                    id="slaDays"
+                    class="form-input sla-input"
+                    value="3"
+                    min="1"
+                    max="30"
+                    required
+                    aria-required="true"
+                    aria-describedby="slaHelp"
+                  />
+                  <span class="sla-label">days from today</span>
+                </div>
+                <span class="field-hint" id="slaHelp">Critical issues: 1–3 days. High: 3–7 days. Medium/Low: 7–14 days.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="assignmentNotes" class="form-label">Assignment Notes</label>
+                <textarea
+                  id="assignmentNotes"
+                  class="form-input"
+                  rows="4"
+                  placeholder="Add instructions for the assigned officer, e.g., 'Bring pumping equipment. Coordinate with BMC water dept for pipeline repair.'"
+                  aria-label="Assignment notes for officer"
+                  maxlength="500"
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="notifyCitizen" name="notifyCitizen" checked />
+                  <span class="checkmark"></span>
+                  Notify the citizen via SMS upon assignment
+                </label>
+              </div>
+
+              <div class="assign-actions">
+                <button type="submit" class="btn btn-primary btn-full" id="assignBtn" aria-label="Assign selected complaint to department">
+                  ✅ Assign Complaint
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- ESCALATION PANEL -->
+          <div class="escalation-panel glass-card" aria-label="Escalation controls">
+            <h2 class="panel-section-title">⬆️ Escalate to Higher Authority</h2>
+            <p class="escalation-desc">Use this for complaints that have exceeded their SLA deadline, involve public safety, or have not been addressed by local offices.</p>
+
+            <div class="form-group">
+              <label for="escalateTarget" class="form-label">Escalate To</label>
+              <select id="escalateTarget" class="form-input form-select" aria-label="Select escalation target authority">
+                <option value="">— Select Authority —</option>
+                <option value="dep-commissioner">Deputy Municipal Commissioner</option>
+                <option value="commissioner">Municipal Commissioner</option>
+                <option value="collector">District Collector</option>
+                <option value="minister">State Minister — Urban Development</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="escalationReason" class="form-label">Reason for Escalation</label>
+              <textarea
+                id="escalationReason"
+                class="form-input"
+                rows="3"
+                placeholder="e.g., Complaint has exceeded 7-day SLA. Local office has failed to respond despite 3 reminders. Public health emergency."
+                aria-label="Reason for escalating the complaint"
+              ></textarea>
+            </div>
+
+            <div class="escalation-confirm-row">
+              <label class="checkbox-label">
+                <input type="checkbox" id="escalationConfirm" />
+                <span class="checkmark"></span>
+                I confirm that escalation is warranted and the local authority has been given adequate time to respond.
+              </label>
+            </div>
+
+            <button class="btn btn-warning btn-full" id="escalateBtn" aria-label="Escalate complaint to higher authority">
+              ⬆️ Escalate Complaint
+            </button>
+          </div>
+
+        </section>
+      </div>
+
+      <!-- DEPARTMENT DIRECTORY -->
+      <section class="dept-directory" id="departments" aria-label="Department directory">
+        <div class="section-header">
+          <h2 class="section-title-sm">🏢 Department Directory</h2>
+          <p>Quick reference for all departments — contact info, current workload, and average resolution time.</p>
+        </div>
+        <div class="dept-cards-grid">
+
+          <article class="dept-card glass-card" aria-label="BMC Sanitation Department details">
+            <div class="dept-icon">🌊</div>
+            <h3 class="dept-name">BMC Sanitation &amp; Drainage</h3>
+            <div class="dept-stats">
+              <div class="dept-stat"><span class="ds-num">34</span><span class="ds-lbl">Active Cases</span></div>
+              <div class="dept-stat"><span class="ds-num">4.2d</span><span class="ds-lbl">Avg. Resolution</span></div>
+              <div class="dept-stat"><span class="ds-num">82%</span><span class="ds-lbl">SLA Compliance</span></div>
+            </div>
+            <div class="dept-contact">📞 +91-22-2362-1000 Ext. 201</div>
+            <div class="dept-officers">👤 12 Officers · Head: Sudhir Joshi</div>
+          </article>
+
+          <article class="dept-card glass-card" aria-label="PWD Roads and Infrastructure Department details">
+            <div class="dept-icon">🛣️</div>
+            <h3 class="dept-name">PWD Roads &amp; Infrastructure</h3>
+            <div class="dept-stats">
+              <div class="dept-stat"><span class="ds-num">28</span><span class="ds-lbl">Active Cases</span></div>
+              <div class="dept-stat"><span class="ds-num">6.8d</span><span class="ds-lbl">Avg. Resolution</span></div>
+              <div class="dept-stat"><span class="ds-num">74%</span><span class="ds-lbl">SLA Compliance</span></div>
+            </div>
+            <div class="dept-contact">📞 +91-22-2362-1000 Ext. 205</div>
+            <div class="dept-officers">👤 8 Officers · Head: Anita Kulkarni</div>
+          </article>
+
+          <article class="dept-card glass-card" aria-label="Water Supply and Sewerage Board details">
+            <div class="dept-icon">💧</div>
+            <h3 class="dept-name">Water Supply &amp; Sewerage Board</h3>
+            <div class="dept-stats">
+              <div class="dept-stat"><span class="ds-num">19</span><span class="ds-lbl">Active Cases</span></div>
+              <div class="dept-stat"><span class="ds-num">3.5d</span><span class="ds-lbl">Avg. Resolution</span></div>
+              <div class="dept-stat"><span class="ds-num">91%</span><span class="ds-lbl">SLA Compliance</span></div>
+            </div>
+            <div class="dept-contact">📞 +91-22-2362-1000 Ext. 210</div>
+            <div class="dept-officers">👤 6 Officers · Head: Mahesh Gawde</div>
+          </article>
+
+          <article class="dept-card glass-card" aria-label="Mumbai Police and Traffic Department details">
+            <div class="dept-icon">🚔</div>
+            <h3 class="dept-name">Mumbai Police / Traffic</h3>
+            <div class="dept-stats">
+              <div class="dept-stat"><span class="ds-num">22</span><span class="ds-lbl">Active Cases</span></div>
+              <div class="dept-stat"><span class="ds-num">1.2d</span><span class="ds-lbl">Avg. Resolution</span></div>
+              <div class="dept-stat"><span class="ds-num">96%</span><span class="ds-lbl">SLA Compliance</span></div>
+            </div>
+            <div class="dept-contact">📞 100 / +91-22-2100-1000</div>
+            <div class="dept-officers">👤 18 Officers · Head: DCP Pradeep Sharma</div>
+          </article>
+
+          <article class="dept-card glass-card" aria-label="Municipal Health Department details">
+            <div class="dept-icon">🏥</div>
+            <h3 class="dept-name">Municipal Health Department</h3>
+            <div class="dept-stats">
+              <div class="dept-stat"><span class="ds-num">11</span><span class="ds-lbl">Active Cases</span></div>
+              <div class="dept-stat"><span class="ds-num">2.1d</span><span class="ds-lbl">Avg. Resolution</span></div>
+              <div class="dept-stat"><span class="ds-num">88%</span><span class="ds-lbl">SLA Compliance</span></div>
+            </div>
+            <div class="dept-contact">📞 +91-22-2362-1000 Ext. 215</div>
+            <div class="dept-officers">👤 5 Officers · Head: Dr. Neha Patel</div>
+          </article>
+
+          <article class="dept-card glass-card" aria-label="Animal Control Cell details">
+            <div class="dept-icon">🐕</div>
+            <h3 class="dept-name">Animal Control Cell</h3>
+            <div class="dept-stats">
+              <div class="dept-stat"><span class="ds-num">9</span><span class="ds-lbl">Active Cases</span></div>
+              <div class="dept-stat"><span class="ds-num">5.4d</span><span class="ds-lbl">Avg. Resolution</span></div>
+              <div class="dept-stat"><span class="ds-num">67%</span><span class="ds-lbl">SLA Compliance</span></div>
+            </div>
+            <div class="dept-contact">📞 +91-22-2362-1000 Ext. 220</div>
+            <div class="dept-officers">👤 4 Officers · Head: Rekha Bhosle</div>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ASSIGNMENT CONFIRMATION MODAL -->
+  <div id="assignConfirmModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="assignModalTitle" hidden>
+    <div class="modal-overlay" id="assignModalOverlay"></div>
+    <div class="modal-box glass-card">
+      <div class="modal-header">
+        <h2 id="assignModalTitle" class="modal-title">Confirm Assignment</h2>
+        <button class="modal-close-btn" id="assignModalClose" aria-label="Cancel and close modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="confirm-message" id="confirmMessage">
+          You are about to assign complaint <strong id="confirmId">NC-2024-015</strong> to <strong id="confirmDept">BMC Sanitation &amp; Drainage</strong> with a <strong id="confirmSLA">3-day SLA</strong>.
+        </p>
+        <p>The assigned officer will be notified immediately. The citizen will receive an SMS update if notification is enabled.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="confirmAssignBtn" aria-label="Confirm and submit assignment">✅ Confirm Assignment</button>
+        <button class="btn btn-outline" id="cancelAssignBtn" aria-label="Cancel assignment">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">🛡️ NagrikConnect</span>
+        <p>Empowering Every Citizen. In Every Language.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="complaint-submission.html">Submit Complaint</a>
+          <a href="complaint-tracking.html">Track Complaint</a>
+          <a href="complaint-history.html">History</a>
+        </div>
+        <div class="footer-col">
+          <h4>Dashboards</h4>
+          <a href="citizen-dashboard.html">Citizen Dashboard</a>
+          <a href="admin-dashboard.html">Admin Dashboard</a>
+          <a href="authority-assignment.html">Authority Panel</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="support.html">Help Center</a>
+          <a href="login.html">Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 NagrikConnect. Empowering Citizens Through Technology.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/assignment.js"></script>
+</body>
+</html>

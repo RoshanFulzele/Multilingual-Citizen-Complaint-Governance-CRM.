@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NagrikConnect — Multilingual Civic Complaint Governance CRM. Submit, track and resolve civic issues in your language." />
+  <title>NagrikConnect — Empowering Every Citizen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/landing.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🛡️ NagrikConnect</a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="complaint-submission.html" class="nav-link">Submit Complaint</a>
+        <a href="complaint-tracking.html" class="nav-link">Track Complaint</a>
+        <a href="complaint-history.html" class="nav-link">History</a>
+        <a href="admin-dashboard.html" class="nav-link">Admin</a>
+        <a href="support.html" class="nav-link">Support</a>
+        <a href="login.html" class="nav-link btn-nav">Login</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero" aria-label="Hero section">
+    <canvas id="particleCanvas" aria-hidden="true"></canvas>
+    <div class="hero-content">
+      <div class="hero-badge">🇮🇳 India's First Multilingual GovTech CRM</div>
+      <h1 class="hero-title">
+        Empowering Every Citizen.<br />
+        <span class="gradient-text">In Every Language.</span>
+      </h1>
+      <p class="hero-subtitle">
+        NagrikConnect bridges the gap between citizens and government authorities. Submit civic complaints in your language, track resolution in real-time, and hold authorities accountable — transparently and efficiently.
+      </p>
+      <div class="hero-cta">
+        <a href="complaint-submission.html" class="btn btn-primary btn-lg" aria-label="Report a complaint">
+          <span>📝</span> Report Complaint
+        </a>
+        <a href="complaint-tracking.html" class="btn btn-secondary btn-lg" aria-label="Track an existing complaint">
+          <span>🔍</span> Track Complaint
+        </a>
+      </div>
+      <div class="hero-meta">
+        <span class="hero-stat">✅ 50,000+ Complaints Resolved</span>
+        <span class="hero-stat">🌐 12 Languages Supported</span>
+        <span class="hero-stat">⚡ 24h Average Response</span>
+      </div>
+    </div>
+    <div class="hero-floating-icons" aria-hidden="true">
+      <span class="float-icon fi-1">🏛️</span>
+      <span class="float-icon fi-2">🌐</span>
+      <span class="float-icon fi-3">🤝</span>
+      <span class="float-icon fi-4">📋</span>
+      <span class="float-icon fi-5">⚖️</span>
+    </div>
+  </section>
+
+  <!-- PROBLEM SECTION -->
+  <section class="section problems-section" id="problems" aria-label="Problems we solve">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">The Problem</span>
+        <h2 class="section-title">Why Citizens Suffer in Silence</h2>
+        <p class="section-desc">Millions of civic issues go unresolved every day. Here's why the current system fails citizens:</p>
+      </div>
+      <div class="cards-grid">
+
+        <article class="problem-card" aria-label="Language Barriers problem">
+          <div class="card-icon problem-icon">🌐</div>
+          <h3>Language Barriers</h3>
+          <p>Over 40% of citizens cannot file complaints because government portals only support English or Hindi, excluding hundreds of regional language speakers.</p>
+        </article>
+
+        <article class="problem-card" aria-label="Slow Response problem">
+          <div class="card-icon problem-icon">⏱️</div>
+          <h3>Slow Response Times</h3>
+          <p>Average complaint resolution takes 30–90 days due to manual processing, departmental handoffs, and lack of priority-based routing.</p>
+        </article>
+
+        <article class="problem-card" aria-label="No Transparency problem">
+          <div class="card-icon problem-icon">👁️</div>
+          <h3>No Transparency</h3>
+          <p>Citizens have no visibility into the status of their complaints. Complaints are filed and forgotten — with no updates, no accountability.</p>
+        </article>
+
+        <article class="problem-card" aria-label="Accessibility Issues problem">
+          <div class="card-icon problem-icon">♿</div>
+          <h3>Accessibility Issues</h3>
+          <p>Elderly and differently-abled citizens cannot navigate complex online forms. Physical offices are inaccessible, especially in rural and semi-urban areas.</p>
+        </article>
+
+        <article class="problem-card" aria-label="Ignored Issues problem">
+          <div class="card-icon problem-icon">😤</div>
+          <h3>Ignored Issues</h3>
+          <p>Low-priority civic issues like broken streetlights, potholes, or open drains go unanswered for months, eroding public trust in government.</p>
+        </article>
+
+        <article class="problem-card" aria-label="Bureaucratic Chaos problem">
+          <div class="card-icon problem-icon">📋</div>
+          <h3>Bureaucratic Chaos</h3>
+          <p>Complaints are routed to the wrong departments, lost in inter-departmental transfers, or duplicated — resulting in citizen frustration and wasted resources.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION SECTION -->
+  <section class="section solutions-section" id="solutions" aria-label="Our solutions">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">The Solution</span>
+        <h2 class="section-title">NagrikConnect Changes Everything</h2>
+        <p class="section-desc">A modern, AI-powered civic platform designed for every Indian citizen — regardless of language, location, or literacy level.</p>
+      </div>
+      <div class="cards-grid">
+
+        <article class="solution-card" aria-label="Multilingual Submission feature">
+          <div class="card-icon solution-icon">🌍</div>
+          <h3>Multilingual Submission</h3>
+          <p>Submit complaints in 12 Indian languages including Hindi, Marathi, Tamil, Bengali, Telugu, Gujarati, Kannada, and more. Automatic language detection included.</p>
+          <span class="feature-tag">12 Languages</span>
+        </article>
+
+        <article class="solution-card" aria-label="AI Translation feature">
+          <div class="card-icon solution-icon">🤖</div>
+          <h3>AI-Powered Translation</h3>
+          <p>Our NLP engine instantly translates citizen complaints to the official language of the handling department, eliminating miscommunication and delays.</p>
+          <span class="feature-tag">Real-time AI</span>
+        </article>
+
+        <article class="solution-card" aria-label="Real-time Tracking feature">
+          <div class="card-icon solution-icon">📍</div>
+          <h3>Real-time Tracking</h3>
+          <p>Every complaint gets a unique tracking ID. Citizens receive SMS and in-app updates at every stage — from submission to final resolution — with full audit trails.</p>
+          <span class="feature-tag">Live Updates</span>
+        </article>
+
+        <article class="solution-card" aria-label="Smart Assignment feature">
+          <div class="card-icon solution-icon">👮</div>
+          <h3>Smart Auto-Assignment</h3>
+          <p>AI categorizes complaints and routes them to the correct department and authority officer automatically, based on category, location, and workload distribution.</p>
+          <span class="feature-tag">AI Routing</span>
+        </article>
+
+        <article class="solution-card" aria-label="Analytics feature">
+          <div class="card-icon solution-icon">📊</div>
+          <h3>Governance Analytics</h3>
+          <p>District-level heatmaps, department performance scores, resolution rate trends, and citizen satisfaction metrics — all in one powerful admin dashboard.</p>
+          <span class="feature-tag">Data Insights</span>
+        </article>
+
+        <article class="solution-card" aria-label="Voice Input feature">
+          <div class="card-icon solution-icon">🎤</div>
+          <h3>Voice Complaint Input</h3>
+          <p>Illiterate citizens can simply speak their complaint in their native language. Our voice-to-text system transcribes, translates, and files it automatically.</p>
+          <span class="feature-tag">Accessibility</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE SHOWCASE -->
+  <section class="section features-showcase" id="features" aria-label="Feature showcase">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Built For India</span>
+        <h2 class="section-title">Features That Matter Most</h2>
+      </div>
+
+      <div class="feature-block feature-block--left">
+        <div class="feature-block-visual" aria-hidden="true">
+          <div class="feature-icon-large">🎤</div>
+          <div class="feature-glow glow-blue"></div>
+        </div>
+        <div class="feature-block-content">
+          <span class="feature-number">01</span>
+          <h3>Voice Complaints in Any Language</h3>
+          <p>Many Indian citizens are literate in their spoken language but not in written form. NagrikConnect's voice input system allows anyone to record a complaint verbally. Our speech recognition engine supports 12 regional languages and auto-transcribes the audio into a structured complaint form — no typing required.</p>
+          <ul class="feature-list">
+            <li>✅ Works on any smartphone</li>
+            <li>✅ Background noise filtering</li>
+            <li>✅ Auto-language detection</li>
+            <li>✅ Instant transcription review</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-block feature-block--right">
+        <div class="feature-block-content">
+          <span class="feature-number">02</span>
+          <h3>Photo & Document Evidence Upload</h3>
+          <p>A picture is worth a thousand words — especially when reporting civic issues. Citizens can attach photographic evidence directly to their complaints. Our system automatically extracts GPS metadata, timestamps images, and stores them securely as immutable evidence — strengthening accountability for authorities.</p>
+          <ul class="feature-list">
+            <li>✅ Up to 5 images per complaint</li>
+            <li>✅ GPS metadata extraction</li>
+            <li>✅ Tamper-proof evidence storage</li>
+            <li>✅ Drag-and-drop upload</li>
+          </ul>
+        </div>
+        <div class="feature-block-visual" aria-hidden="true">
+          <div class="feature-icon-large">📸</div>
+          <div class="feature-glow glow-teal"></div>
+        </div>
+      </div>
+
+      <div class="feature-block feature-block--left">
+        <div class="feature-block-visual" aria-hidden="true">
+          <div class="feature-icon-large">⬆️</div>
+          <div class="feature-glow glow-purple"></div>
+        </div>
+        <div class="feature-block-content">
+          <span class="feature-number">03</span>
+          <h3>Automatic Smart Escalation</h3>
+          <p>If a complaint isn't resolved within its deadline, NagrikConnect automatically escalates it to the next level of authority — from local ward office to municipal commissioner to district collector. Citizens are notified at every escalation step, ensuring no issue is ever buried or ignored.</p>
+          <ul class="feature-list">
+            <li>✅ Deadline-based auto-escalation</li>
+            <li>✅ Multi-tier authority chain</li>
+            <li>✅ Escalation notifications</li>
+            <li>✅ Public accountability records</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CIVIC EXAMPLES -->
+  <section class="section civic-examples" id="examples" aria-label="Real civic complaint examples">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Real Scenarios</span>
+        <h2 class="section-title">Complaints Like Yours, Resolved</h2>
+        <p class="section-desc">See how citizens across India are using NagrikConnect to get their civic issues fixed.</p>
+      </div>
+      <div class="examples-track-wrapper">
+        <div class="examples-track" aria-live="polite">
+
+          <article class="example-card" aria-label="Noise Complaint example">
+            <div class="example-header">
+              <span class="example-emoji">🔊</span>
+              <span class="example-status resolved">Resolved</span>
+            </div>
+            <h4>Late Night Noise Complaint</h4>
+            <p>Repeated late-night loud music from a commercial establishment disturbing residential area. Submitted via voice note in Hindi.</p>
+            <div class="example-meta">
+              <span>📍 Bandra West, Mumbai</span>
+              <span>⏱️ Resolved in 18 hours</span>
+            </div>
+            <div class="example-category">Noise Pollution</div>
+          </article>
+
+          <article class="example-card" aria-label="Illegal Parking example">
+            <div class="example-header">
+              <span class="example-emoji">🚗</span>
+              <span class="example-status resolved">Resolved</span>
+            </div>
+            <h4>Illegal Parking Blocking Lane</h4>
+            <p>Commercial vehicles illegally parked on residential lane blocking emergency access. Photo evidence uploaded. Submitted in Marathi.</p>
+            <div class="example-meta">
+              <span>📍 Deccan Gymkhana, Pune</span>
+              <span>⏱️ Resolved in 6 hours</span>
+            </div>
+            <div class="example-category">Illegal Parking</div>
+          </article>
+
+          <article class="example-card" aria-label="Public Washroom example">
+            <div class="example-header">
+              <span class="example-emoji">🚻</span>
+              <span class="example-status in-progress">In Progress</span>
+            </div>
+            <h4>Non-Functional Public Washroom</h4>
+            <p>Public washroom near bus stand non-functional for 2 weeks. Water supply cut and doors broken. Submitted in Tamil by local resident.</p>
+            <div class="example-meta">
+              <span>📍 T. Nagar, Chennai</span>
+              <span>⏱️ Day 3 of 7-day SLA</span>
+            </div>
+            <div class="example-category">Sanitation</div>
+          </article>
+
+          <article class="example-card" aria-label="Garbage Delay example">
+            <div class="example-header">
+              <span class="example-emoji">🗑️</span>
+              <span class="example-status escalated">Escalated</span>
+            </div>
+            <h4>Garbage Collection Stopped</h4>
+            <p>Municipal garbage truck hasn't visited for 10 days causing waste pile-up and health hazard. Escalated to municipal commissioner.</p>
+            <div class="example-meta">
+              <span>📍 Rajajinagar, Bengaluru</span>
+              <span>⏱️ Escalated on Day 5</span>
+            </div>
+            <div class="example-category">Garbage Collection</div>
+          </article>
+
+          <article class="example-card" aria-label="Street Animals example">
+            <div class="example-header">
+              <span class="example-emoji">🐕</span>
+              <span class="example-status resolved">Resolved</span>
+            </div>
+            <h4>Aggressive Street Dogs Near School</h4>
+            <p>Pack of aggressive stray dogs near primary school entrance causing fear among children. Submitted in Bengali. Animal control dispatched.</p>
+            <div class="example-meta">
+              <span>📍 Salt Lake, Kolkata</span>
+              <span>⏱️ Resolved in 12 hours</span>
+            </div>
+            <div class="example-category">Street Animals</div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS SECTION -->
+  <section class="section stats-section" id="stats" aria-label="Platform statistics">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Impact So Far</span>
+        <h2 class="section-title">Numbers That Tell Our Story</h2>
+      </div>
+      <div class="stats-grid">
+
+        <div class="stat-card" aria-label="Complaints resolved statistic">
+          <div class="stat-icon">📝</div>
+          <div class="stat-number" id="counter1" data-target="50000">0</div>
+          <div class="stat-suffix">+</div>
+          <div class="stat-label">Complaints Resolved</div>
+          <div class="stat-desc">Across 28 states and 8 union territories</div>
+        </div>
+
+        <div class="stat-card" aria-label="Resolution rate statistic">
+          <div class="stat-icon">✅</div>
+          <div class="stat-number" id="counter2" data-target="95">0</div>
+          <div class="stat-suffix">%</div>
+          <div class="stat-label">Resolution Rate</div>
+          <div class="stat-desc">Industry-leading complaint closure rate</div>
+        </div>
+
+        <div class="stat-card" aria-label="Average response time statistic">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-number" id="counter3" data-target="24">0</div>
+          <div class="stat-suffix">h</div>
+          <div class="stat-label">Avg. Response Time</div>
+          <div class="stat-desc">From submission to first official response</div>
+        </div>
+
+        <div class="stat-card" aria-label="Languages supported statistic">
+          <div class="stat-icon">🌐</div>
+          <div class="stat-number" id="counter4" data-target="12">0</div>
+          <div class="stat-suffix"></div>
+          <div class="stat-label">Languages Supported</div>
+          <div class="stat-desc">Covering 98% of India's spoken population</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA SECTION -->
+  <section class="section cta-section" id="cta" aria-label="Call to action">
+    <div class="container">
+      <div class="cta-content">
+        <span class="cta-tag">Join the Movement</span>
+        <h2 class="cta-title">Your Voice Matters.<br /><span class="gradient-text">Use It.</span></h2>
+        <p class="cta-desc">Thousands of citizens across India are already holding their local governments accountable. Be part of the change. Report your civic issues today and help build a better, more responsive India.</p>
+        <div class="cta-buttons">
+          <a href="complaint-submission.html" class="btn btn-primary btn-lg" aria-label="Submit a new complaint">
+            📝 Submit Your First Complaint
+          </a>
+          <a href="citizen-dashboard.html" class="btn btn-outline btn-lg" aria-label="View your dashboard">
+            🏠 View Citizen Dashboard
+          </a>
+        </div>
+        <p class="cta-note">Free to use. No registration required for tracking. Available in 12 languages.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">🛡️ NagrikConnect</span>
+        <p>Empowering Every Citizen. In Every Language.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="complaint-submission.html">Submit Complaint</a>
+          <a href="complaint-tracking.html">Track Complaint</a>
+          <a href="complaint-history.html">History</a>
+        </div>
+        <div class="footer-col">
+          <h4>Dashboards</h4>
+          <a href="citizen-dashboard.html">Citizen Dashboard</a>
+          <a href="admin-dashboard.html">Admin Dashboard</a>
+          <a href="authority-assignment.html">Authority Panel</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="support.html">Help Center</a>
+          <a href="login.html">Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 NagrikConnect. Empowering Citizens Through Technology.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/landing.js"></script>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="View full complaint history on NagrikConnect — filter, sort and export all your civic complaints." />
+  <title>Complaint History — NagrikConnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/history.css" />
+</head>
+<body class="history-page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🛡️ NagrikConnect</a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="complaint-submission.html" class="nav-link">Submit Complaint</a>
+        <a href="complaint-tracking.html" class="nav-link">Track Complaint</a>
+        <a href="complaint-history.html" class="nav-link active">History</a>
+        <a href="admin-dashboard.html" class="nav-link">Admin</a>
+        <a href="support.html" class="nav-link">Support</a>
+        <a href="login.html" class="nav-link btn-nav">Login</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="history-main" role="main">
+    <div class="history-container">
+
+      <!-- PAGE HEADER -->
+      <header class="history-header">
+        <div>
+          <h1>📋 Complaint History</h1>
+          <p>View, filter, and manage all complaints filed from your account. Export records for your reference.</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-secondary" id="exportBtn" aria-label="Export complaint history as CSV">
+            📥 Export CSV
+          </button>
+          <a href="complaint-submission.html" class="btn btn-primary" aria-label="Submit a new complaint">
+            + New Complaint
+          </a>
+        </div>
+      </header>
+
+      <!-- FILTER BAR -->
+      <section class="filter-bar glass-card" aria-label="Complaint filter controls">
+        <div class="filter-row">
+          <div class="filter-group filter-search">
+            <label for="historySearch" class="filter-label">Search</label>
+            <div class="input-wrapper">
+              <span class="input-icon">🔍</span>
+              <input
+                type="search"
+                id="historySearch"
+                class="form-input filter-input"
+                placeholder="Search by title, ID, or location…"
+                aria-label="Search complaints"
+                aria-controls="complaintsTable"
+              />
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label for="statusFilter" class="filter-label">Status</label>
+            <select id="statusFilter" class="form-input form-select filter-select" aria-label="Filter by status" aria-controls="complaintsTable">
+              <option value="">All Statuses</option>
+              <option value="submitted">Submitted</option>
+              <option value="assigned">Assigned</option>
+              <option value="inprogress">In Progress</option>
+              <option value="escalated">Escalated</option>
+              <option value="resolved">Resolved</option>
+              <option value="closed">Closed</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="categoryFilter" class="filter-label">Category</label>
+            <select id="categoryFilter" class="form-input form-select filter-select" aria-label="Filter by category" aria-controls="complaintsTable">
+              <option value="">All Categories</option>
+              <option value="noise">Noise Pollution</option>
+              <option value="parking">Illegal Parking</option>
+              <option value="sanitation">Sanitation</option>
+              <option value="animals">Street Animals</option>
+              <option value="road">Road Damage</option>
+              <option value="streetlight">Street Light</option>
+              <option value="garbage">Garbage Collection</option>
+              <option value="construction">Illegal Construction</option>
+              <option value="water">Water Supply</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="dateFrom" class="filter-label">From Date</label>
+            <input type="date" id="dateFrom" class="form-input filter-input" aria-label="Filter from date" aria-controls="complaintsTable" />
+          </div>
+
+          <div class="filter-group">
+            <label for="dateTo" class="filter-label">To Date</label>
+            <input type="date" id="dateTo" class="form-input filter-input" aria-label="Filter to date" aria-controls="complaintsTable" />
+          </div>
+
+          <div class="filter-actions">
+            <button class="btn btn-primary" id="applyFilters" aria-label="Apply all selected filters">Apply</button>
+            <button class="btn btn-outline" id="clearFilters" aria-label="Clear all filters">Clear</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SORT + COUNT ROW -->
+      <div class="table-controls-row" aria-label="Table controls">
+        <div class="results-count" id="resultsCount" aria-live="polite">
+          Showing <strong id="shownCount">12</strong> of <strong id="totalCount">12</strong> complaints
+        </div>
+        <div class="sort-controls">
+          <label for="sortSelect" class="sort-label">Sort by:</label>
+          <select id="sortSelect" class="form-input form-select sort-select" aria-label="Sort complaints" aria-controls="complaintsTable">
+            <option value="date-desc">Date (Newest First)</option>
+            <option value="date-asc">Date (Oldest First)</option>
+            <option value="priority-high">Priority (High to Low)</option>
+            <option value="priority-low">Priority (Low to High)</option>
+            <option value="status">Status</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- COMPLAINTS TABLE -->
+      <div class="table-wrapper">
+        <table class="complaints-table" id="complaintsTable" aria-label="Complaint history table">
+          <thead>
+            <tr>
+              <th scope="col" class="th-id" aria-sort="none">
+                <button class="sort-header" data-sort="id" aria-label="Sort by ID">ID ↕</button>
+              </th>
+              <th scope="col" class="th-title">
+                <button class="sort-header" data-sort="title" aria-label="Sort by title">Title ↕</button>
+              </th>
+              <th scope="col" class="th-category">Category</th>
+              <th scope="col" class="th-status">
+                <button class="sort-header" data-sort="status" aria-label="Sort by status">Status ↕</button>
+              </th>
+              <th scope="col" class="th-date">
+                <button class="sort-header" data-sort="date" aria-label="Sort by date">Date Filed ↕</button>
+              </th>
+              <th scope="col" class="th-priority">
+                <button class="sort-header" data-sort="priority" aria-label="Sort by priority">Priority ↕</button>
+              </th>
+              <th scope="col" class="th-actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="complaintsTableBody" aria-live="polite">
+
+            <tr class="table-row" data-id="NC-2024-012" data-category="construction" data-status="escalated" data-priority="critical" data-date="2024-12-05">
+              <td class="td-id"><a href="complaint-tracking.html" class="id-link" aria-label="Track complaint NC-2024-012">NC-2024-012</a></td>
+              <td class="td-title">Illegal Construction Blocking Public Path</td>
+              <td class="td-category"><span class="cat-badge">🏗️ Construction</span></td>
+              <td class="td-status"><span class="status-badge status-escalated">⬆️ Escalated</span></td>
+              <td class="td-date"><time datetime="2024-12-05">Dec 5, 2024</time></td>
+              <td class="td-priority"><span class="priority-badge priority-critical">🔴 Critical</span></td>
+              <td class="td-actions">
+                <button class="action-btn view-btn" data-complaint-id="NC-2024-012" aria-label="View details for NC-2024-012">👁️ View</button>
+                <a href="complaint-tracking.html" class="action-btn track-btn" aria-label="Track NC-2024-012">🔍 Track</a>
+              </td>
+            </tr>
+
+            <tr class="table-row" data-id="NC-2024-011" data-category="streetlight" data-status="assigned" data-priority="medium" data-date="2024-12-12">
+              <td class="td-id"><a href="complaint-tracking.html" class="id-link" aria-label="Track complaint NC-2024-011">NC-2024-011</a></td>
+              <td class="td-title">Broken Streetlight on Worli Sea Face</td>
+              <td class="td-category"><span class="cat-badge">💡 Street Light</span></td>
+              <td class="td-status"><span class="status-badge status-assigned">🏢 Assigned</span></td>
+              <td class="td-date"><time datetime="2024-12-12">Dec 12, 2024</time></td>
+              <td class="td-priority"><span class="priority-badge priority-medium">🟡 Medium</span></td>
+              <td class="td-actions">
+                <button class="action-btn view-btn" data-complaint-id="NC-2024-011" aria-label="View details for NC-2024-011">👁️ View</button>
+                <a href="complaint-tracking.html" class="action-btn track-btn" aria-label="Track NC-2024-011">🔍 Track</a>
+              </td>
+            </tr>
+
+            <tr class="table-row" data-id="NC-2024-009" data-category="sanitation" data-status="inprogress" data-priority="high" data-date="2024-12-10">
+              <td class="td-id"><a href="complaint-tracking.html" class="id-link" aria-label="Track complaint NC-2024-009">NC-2024-009</a></td>
+              <td class="td-title">Overflowing Drain Near Linking Road</td>
+              <td class="td-category"><span class="cat-badge">🌊 Sanitation</span></td>
+              <td class="td-status"><span class="status-badge status-inprogress">⚙️ In Progress</span></td>
+              <td class="td-date"><time datetime="2024-12-10">Dec 10, 2024</time></td>
+              <td class="td-priority"><span class="priority-badge priority-high">🟠 High</span></td>
+              <td class="td-actions">
+                <button class="action-btn view-btn" data-complaint-id="NC-2024-009" aria-label="View details for NC-2024-009">👁️ View</button>
+                <a href="complaint-tracking.html" class="action-btn track-btn" aria-label="Track NC-2024-009">🔍 Track</a>
+              </td>
+            </tr>
+
+            <tr class="table-row" data-id="NC-2024-007" data-category="road" data-status="resolved" data-priority="high" data-date="2024-11-28">
+              <td class="td-id"><a href="complaint-tracking.html" class="id-link" aria-label="Track complaint NC-2024-007">NC-2024-007</a></td>
+              <td class="td-title">Large Pothole on Andheri-Kurla Road</td>
+              <td class="td-category"><span class="cat-badge">🛣️ Road Damage</span></td>
+              <td class="td-status"><span class="status-badge status-resolved">✅ Resolved</span></td>
+              <td class="td-date"><time datetime="2024-11-28">Nov 28, 2024</time></td>
+              <td class="td-priority"><span class="priority-badge priority-high">🟠 High</span></td>
+              <td class="td-actions">
+                <button class="action-btn view-btn" data-complaint-id="NC-2024-007" aria-label="View details for NC-2024-007">👁️ View</button>
+                <button class="action-btn rate-btn" data-complaint-id="NC-2024-007" aria-label="Rate resolution of NC-2024-007">⭐ Rate</button>
+              </td>
+            </tr>
+
+            <tr class="table-row" data-id="NC-2024-005" data-category="noise" data-status="resolved" data-priority="medium" data-date="2024-11-20">
+              <td class="td-id"><a href="complaint-tracking.html" class="id-link" aria-label="Track complaint NC-2024-005">NC-2024-005</a></td>
+              <td class="td-title">Late Night Noise from Bar Near Residential Zone</td>
+              <td class="td-category"><span class="cat-badge">🔊 Noise</span></td>
+              <td class="td-status"><span class="status-badge status-resolved">✅ Resolved</span></td>
+              <td class="td-date"><time datetime="2024-11-20">Nov 20, 2024</time></td>
+              <td class="td-priority"><span class="priority-badge priority-medium">🟡 Medium</span></td>
+              <td class="td-actions">
+                <button class="action-btn view-btn" data-complaint-id="NC-2024-005" aria-label="View details for NC-2024-005">👁️ View</button>
+                <button class="action-btn rate-btn" data-complaint-id="NC-2024-005" aria-label="Rate resolution of NC-2024-005">⭐ Rate</button>
+              </td>
+            </tr>
+
+            <tr class="table-row" data-id="NC-2024-003" data-category="garbage" data-status="resolved" data-priority="medium" data-date="2024-11-08">
+              <td class="td-id"><a href="complaint-tracking.html" class="id-link" aria-label="Track complaint NC-2024-003">NC-2024-003</a></td>
+              <td class="td-title">Garbage Collection Skipped for 7 Days</td>
+              <td class="td-category"><span class="cat-badge">🗑️ Garbage</span></td>
+              <td class="td-status"><span class="status-badge status-resolved">✅ Resolved</span></td>
+              <td class="td-date"><time datetime="2024-11-08">Nov 8, 2024</time></td>
+              <td class="td-priority"><span class="priority-badge priority-medium">🟡 Medium</span></td>
+              <td class="td-actions">
+                <button class="action-btn view-btn" data-complaint-id="NC-2024-003" aria-label="View details for NC-2024-003">👁️ View</button>
+                <button class="action-btn rate-btn" data-complaint-id="NC-2024-003" aria-label="Rate resolution of NC-2024-003">⭐ Rate</button>
+              </td>
+            </tr>
+
+            <tr class="table-row" data-id="NC-2024-001" data-category="animals" data-status="resolved" data-priority="high" data-date="2024-10-15">
+              <td class="td-id"><a href="complaint-tracking.html" class="id-link" aria-label="Track complaint NC-2024-001">NC-2024-001</a></td>
+              <td class="td-title">Aggressive Stray Dogs Near Primary School Gate</td>
+              <td class="td-category"><span class="cat-badge">🐕 Street Animals</span></td>
+              <td class="td-status"><span class="status-badge status-resolved">✅ Resolved</span></td>
+              <td class="td-date"><time datetime="2024-10-15">Oct 15, 2024</time></td>
+              <td class="td-priority"><span class="priority-badge priority-high">🟠 High</span></td>
+              <td class="td-actions">
+                <button class="action-btn view-btn" data-complaint-id="NC-2024-001" aria-label="View details for NC-2024-001">👁️ View</button>
+                <button class="action-btn rate-btn" data-complaint-id="NC-2024-001" aria-label="Rate resolution of NC-2024-001">⭐ Rate</button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <!-- EMPTY STATE -->
+      <div class="empty-state" id="emptyState" hidden aria-live="polite" role="status">
+        <div class="empty-icon" aria-hidden="true">📭</div>
+        <h3>No complaints match your filters</h3>
+        <p>Try adjusting your search or filter criteria, or clear all filters to see all complaints.</p>
+        <button class="btn btn-primary" id="clearFiltersEmpty" aria-label="Clear all filters">Clear Filters</button>
+      </div>
+
+      <!-- PAGINATION -->
+      <nav class="pagination" id="pagination" aria-label="Complaint history pages">
+        <button class="page-btn prev-btn" id="prevPage" aria-label="Go to previous page" disabled>← Prev</button>
+        <div class="page-numbers" id="pageNumbers" role="list" aria-label="Page numbers">
+          <button class="page-btn page-num active" aria-label="Page 1" aria-current="page" data-page="1">1</button>
+          <button class="page-btn page-num" aria-label="Page 2" data-page="2">2</button>
+          <button class="page-btn page-num" aria-label="Page 3" data-page="3">3</button>
+        </div>
+        <button class="page-btn next-btn" id="nextPage" aria-label="Go to next page">Next →</button>
+      </nav>
+
+    </div>
+  </main>
+
+  <!-- COMPLAINT DETAIL MODAL -->
+  <div id="complaintModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal-box glass-card">
+      <div class="modal-header">
+        <h2 id="modalTitle" class="modal-title">Complaint Details</h2>
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close complaint details modal">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+
+        <div class="modal-id-row">
+          <span class="modal-id" id="modalId">NC-2024-001</span>
+          <span class="modal-status" id="modalStatus">Resolved</span>
+        </div>
+
+        <div class="modal-detail-grid">
+          <div class="modal-detail">
+            <span class="md-label">Title</span>
+            <span class="md-val" id="modalComplaintTitle">—</span>
+          </div>
+          <div class="modal-detail">
+            <span class="md-label">Category</span>
+            <span class="md-val" id="modalCategory">—</span>
+          </div>
+          <div class="modal-detail">
+            <span class="md-label">Priority</span>
+            <span class="md-val" id="modalPriority">—</span>
+          </div>
+          <div class="modal-detail">
+            <span class="md-label">Date Filed</span>
+            <span class="md-val" id="modalDate">—</span>
+          </div>
+          <div class="modal-detail">
+            <span class="md-label">Location</span>
+            <span class="md-val" id="modalLocation">—</span>
+          </div>
+          <div class="modal-detail">
+            <span class="md-label">Department</span>
+            <span class="md-val" id="modalDept">—</span>
+          </div>
+          <div class="modal-detail modal-detail-full">
+            <span class="md-label">Description</span>
+            <span class="md-val" id="modalDescription">—</span>
+          </div>
+          <div class="modal-detail modal-detail-full">
+            <span class="md-label">Resolution Note</span>
+            <span class="md-val" id="modalResolution">—</span>
+          </div>
+        </div>
+
+        <div class="modal-timeline" id="modalTimeline" aria-label="Mini complaint timeline">
+          <h4>Quick Timeline</h4>
+          <div class="mini-timeline" id="miniTimeline" aria-live="polite"></div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <a href="complaint-tracking.html" class="btn btn-primary" id="modalTrackBtn" aria-label="Track this complaint">🔍 Full Tracking View</a>
+        <button class="btn btn-outline" id="modalExportBtn" aria-label="Export this complaint as PDF">📄 Export PDF</button>
+        <button class="btn btn-outline modal-close-btn" id="modalCloseBtnBottom" aria-label="Close modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">🛡️ NagrikConnect</span>
+        <p>Empowering Every Citizen. In Every Language.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="complaint-submission.html">Submit Complaint</a>
+          <a href="complaint-tracking.html">Track Complaint</a>
+          <a href="complaint-history.html">History</a>
+        </div>
+        <div class="footer-col">
+          <h4>Dashboards</h4>
+          <a href="citizen-dashboard.html">Citizen Dashboard</a>
+          <a href="admin-dashboard.html">Admin Dashboard</a>
+          <a href="authority-assignment.html">Authority Panel</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="support.html">Help Center</a>
+          <a href="login.html">Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 NagrikConnect. Empowering Citizens Through Technology.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/history.js"></script>
+</body>
+</html>
